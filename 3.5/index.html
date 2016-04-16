@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Music Algorithms</title>
+    
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script src="js/morph.js"></script>
+
+    <!-- Load in external CSS files //-->
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+
+<body>
+
+    <!-- Header //-->
+    <header>
+        <h1 id="title">
+                <font color="#EA5744">Music</font>Algorithms
+        </h1>
+
+        <div class="voiceSelect">
+            <label>
+                <select id="welcomeChoice">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+
+                <div>Voices</div>
+            </label>
+        </div>
+
+        <!-- Menu tabs - No need to edit //-->
+        <ul class="" id="menu">
+            <li>
+                <a href="" id="welcome" class="menu_active">Welcome</a>
+            </li>
+            <li>
+                <a href="" id="pitch_input">Pitch Input</a>
+            </li>
+            <li>
+                <a href="" id="duration_input">Duration Input</a>
+            </li>
+            <li>
+                <a href="" id="pitch_mapping">Pitch Mapping</a>
+            </li>
+            <li>
+                <a href="" id="duration_mapping">Duration Mapping</a>
+            </li>
+            <li>
+                <a href="" id="scale_options">Scale Options</a>
+            </li>
+            <li>
+                <a href="" id="play" onClick='getOutput();'>Play</a>
+            </li>
+        </ul>
+    </header>
+
+
+    <!-- Save Modal Dialog //-->
+    <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title" id="myModalLabel">Save</h3>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn btn-sm btn-primary save">Save CSV File</button>
+                    <hr>Or Copy & Paste:
+                    <br />
+                    <textarea style="width: 100%; height: 100px;"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Save Modal Dialog //-->
+
+    <!-- Load Modal Dialog //-->
+ <div class="modal fade" id="loadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title" id="myModalLabel">Load</h3>
+                </div>
+                <div class="modal-body">
+                
+                    <button class="btn btn-sm btn-primary load">Load CSV File</button>
+                    <input type="file" name="file" id="load-upload" style="display: none" />
+                    
+                    <hr>Or Copy & Paste:
+                    <br />
+                    <textarea style="width: 100%; height: 100px;"></textarea>
+                </div>
+                <div class="modal-footer">
+			  <button type="button" class="btn btn-primary btn-loadIn"><span class="glyphicon glyphicon-folder-open"></span> Load</button>
+			  <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Load Modal Dialog //-->
+    
+    <!-- Start MORPH Modal Dialog //-->
+    <div class='modal fade morph-modal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+        <div class='modal-dialog modal-lg'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                    <h3 class='modal-title' id='myModalLabel'>Morph</h3>
+                </div>
+                <div class='modal-body'>
+                		<div id='mygraph'></div>
+                		<center><input id='slide' onchange='updateMorph()' data-slider='true' data-slider-step='1' data-slider-range='1,100'></center>
+                		<hr />
+				<textarea id='morphBox' style='width: 100%' value='124' readonly></textarea>
+                </div>
+                <div class='modal-footer'>
+                		<button type='button' class='btn btn-success morph-accept' onclick="adjustForMorph()"><span class='glyphicon glyphicon-ok'></span> Apply</button>
+			  	<button type='button' class='btn btn-default' data-dismiss='modal'><span class='glyphicon glyphicon-remove'></span> Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End MORPH Modal Dialog //-->
+    
+    <!-- Pitch Input Utilities Dialog //-->
+	<div class='modal fade Utility-modal' id='pitchInputUtilityModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+		<div class='modal-dialog modal-xl'>
+			<div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3 class='modal-title' id='myModalLabel'>Data Utilities</h3>
+				</div>
+				<div class='modal-body'>
+					<textarea id='pitchInputUtilityBox' style='width: 100%' value='124'></textarea>
+					<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('pitchInputUtilityBox'))">Reverse</button>
+					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilitySampleDiv')">Sample Rate  <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityReplaceDiv')">Replace  <span class='glyphicon glyphicon-list'></span></button> 
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button><br>
+					<div id='pitchInputUtilityAddCommaDiv' class='util-div' style='display: none'>
+					<hr>
+					<br>
+					<b>These tools will help separate the data for use in other functions.<br>
+					This function is best used for data that isn't separated by anything and needs commas.<br>
+					If the data is already separated by something that isn't a comma, consider using the replace utility instead.</b><br><br>
+					<div class="horizontalAlignCenter">
+					Insert a comma every <input type="text" id='pitchInputUtilityCommaValue' style='width: 40px' maxlength='4'> character(s). <button type="button" onclick='addCommas("#pitchInputUtilityCommaValue", "#pitchInputUtilityBox")'class="btn btn-default">Insert</button>
+					</div>
+					
+					</div>
+					<div id='pitchInputUtilityDecimalDiv' class='util-div' style='display: none'>
+						<hr>
+						<br>
+						<b>Use these tools to turn decimal numbers into a more playable form.</b><br><br>
+						<div class='horizontalAlignCenter'>
+						Multiply numbers by: <input type='text' id='pitchInputUtilityMultiplyValue' style='width: 80px'>
+						<button type="button" class="btn btn-default" onclick="multiply(document.getElementById('pitchInputUtilityMultiplyValue').value, document.getElementById('pitchInputUtilityBox'))">Multiply</button>
+						</div>
+						<br>
+						<button type="button" class="btn btn-default" onclick="floor(document.getElementById('pitchInputUtilityBox'))">Floor</button>
+						<button type="button" class="btn btn-default" onclick="ceiling(document.getElementById('pitchInputUtilityBox'))">Ceiling</button>
+						<button type="button" class="btn btn-default" onclick="round(document.getElementById('pitchInputUtilityBox'))">Round</button>
+					</div>
+					<div id='pitchInputUtilityInvertDiv' class='util-div' style='display: none'>
+					<hr>
+					<br>
+					<b>Invert the values of the notes around a value, or around the average.
+						<br>High notes will become low notes, and low notes will become high notes.
+						<br><br>WARNING: If you choose to invert around your own value, be careful that <br>the resulting notes don't fall out of the playable range!</b><br><br>
+						<div class="horizontalAlignCenter">
+						Invert around a custom value: <input type="text" id='pitchInputUtilityInvertValue' style='width: 40px' maxlength='4'>
+						<button type="button" class="btn btn-default" onclick="invertExplicit(document.getElementById('pitchInputUtilityInvertValue').value, document.getElementById('pitchInputUtilityBox'))">Invert</button>
+						</div><br>
+						<div class="horizontalAlignCenter">
+						Or invert around the average note for the stream: <button type="button" class="btn btn-default" onclick="invert(document.getElementById('pitchInputUtilityBox'))">Invert via Average</button>
+						</div>
+					</div>
+					<div id='pitchInputUtilitySampleDiv' class='util-div' style='display: none'>
+					<hr>
+					<br>
+					<b>Reduce the stream size by sampling every X note via the sampling types below.</b><br><br>
+						<div class="horizontalAlignCenter">
+						Sample Rate:
+						<input type='text' id='pitchInputUtilitySampleInterval' style='width: 40px' maxlength='4'>
+						</div>
+						<br>
+						<div class="horizontalAlignCenter">
+						Sample type:
+						<button type="button" class="btn btn-default" onclick="sampleAverage(document.getElementById('pitchInputUtilitySampleInterval').value, document.getElementById('pitchInputUtilityBox'))">Average</button>
+						<button type="button" class="btn btn-default" onclick="sampleMedian(document.getElementById('pitchInputUtilitySampleInterval').value, document.getElementById('pitchInputUtilityBox'))">Median</button>
+						<button type="button" class="btn btn-default" onclick="sampleActual(document.getElementById('pitchInputUtilitySampleInterval').value, document.getElementById('pitchInputUtilityBox'))">Actual</button>
+						</div>	
+						<br>Not satisfied? <button type="button" class="btn btn-default" onclick="undo(document.getElementById('pitchInputUtilityBox'))">Undo</button>
+					</div>
+					<div id='pitchInputUtilityReplaceDiv' class="horizontalAlignCenter util-div" style='display: none'>
+					<hr>
+					<br>
+					<b>Replace characters in the stream.</b><br><br>
+					<button type="button" class="btn btn-default" onclick="replace(document.getElementById('pitchInputUtilityBox'), document.getElementById('pitchInputUtilityReplaceTarget'), document.getElementById('pitchInputUtilityReplaceSubstitute'))" >Replace</button>
+					<input type='text' id='pitchInputUtilityReplaceTarget' style='width: 36px' maxlength='3'> with <input type="text" id='pitchInputUtilityReplaceSubstitute' style='width: 36px' maxlength='3'>
+					</div>
+					<div id='pitchInputUtilityFilterDiv' class='util-div' style='display: none'>
+						<hr>
+						<br><b>Filter the notes by a range of values. All notes that do not fall in the range become zero. </b><br><br>
+						
+						<div class="horizontalAlignBottom">
+						Low: <input id="pitchInputUtilityFilterRangeLow1" type="text" style="width: 36px">
+						High:<input id="pitchInputUtilityFilterRangeHigh1" type="text" style="width: 36px">
+						<button id="pitchInputUtilityFilterButton1" onclick="filter(document.getElementById('pitchInputUtilityBox'), document.getElementById('pitchInputUtilityFilterRangeLow1'), document.getElementById('pitchInputUtilityFilterRangeHigh1'), document.getElementById('pitchInputUtilityTextFilter1'))" type="button" class="btn btn-default">Filter</button>
+						<textarea readonly id='pitchInputUtilityTextFilter1' style='width: 30%' value='124'></textarea>
+
+						Low: <input id="pitchInputUtilityFilterRangeLow2" type="text" style="width: 36px">						
+						High:<input id="pitchInputUtilityFilterRangeHigh2" type="text" style="width: 36px">
+						<button id="pitchInputUtilityFilterButton2" onclick="filter(document.getElementById('pitchInputUtilityBox'), document.getElementById('pitchInputUtilityFilterRangeLow2'), document.getElementById('pitchInputUtilityFilterRangeHigh2'), document.getElementById('pitchInputUtilityTextFilter2'))" type="button" class="btn btn-default">Filter</button>
+						<textarea readonly id='pitchInputUtilityTextFilter2' style='width: 30%' value='124'></textarea>
+						</div>
+						<br><br>
+						
+						
+						<div class="horizontalAlignBottom">
+						Low: <input id="pitchInputUtilityFilterRangeLow3" type="text" style="width: 36px">
+						High:<input id="pitchInputUtilityFilterRangeHigh3" type="text" style="width: 36px">
+						<button id="pitchInputUtilityFilterButton3" onclick="filter(document.getElementById('pitchInputUtilityBox'), document.getElementById('pitchInputUtilityFilterRangeLow3'), document.getElementById('pitchInputUtilityFilterRangeHigh3'), document.getElementById('pitchInputUtilityTextFilter3'))" type="button" class="btn btn-default">Filter</button>
+						<textarea readonly id='pitchInputUtilityTextFilter3' style='width: 30%' value='124'></textarea>
+
+						Low: <input id="pitchInputUtilityFilterRangeLow4" type="text" style="width: 36px">						
+						High:<input id="pitchInputUtilityFilterRangeHigh4" type="text" style="width: 36px">
+						<button id="pitchInputUtilityFilterButton4" onclick="filter(document.getElementById('pitchInputUtilityBox'), document.getElementById('pitchInputUtilityFilterRangeLow4'), document.getElementById('pitchInputUtilityFilterRangeHigh4'), document.getElementById('pitchInputUtilityTextFilter4'))" type="button" class="btn btn-default">Filter</button>
+						<textarea readonly id='pitchInputUtilityTextFilter4' style='width: 30%' value='124'></textarea>
+						</div>
+					</div>
+					
+				</div>
+				<div class='modal-footer'>
+					<button type='button' class='btn btn-success pitchInputUtil-accept' onclick="acceptPitchInputUtilities()"><span class='glyphicon glyphicon-ok'></span> Apply</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END Pitch Input Utiities Dialog //-->
+	
+	<!-- Duration Input Utilities Dialog //-->
+	<div class='modal fade Utility-modal' id='durationInputUtilityModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+		<div class='modal-dialog modal-xl'>
+			<div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3 class='modal-title' id='myModalLabel'>Data Utilities</h3>
+				</div>
+				<div class='modal-body'>
+					<textarea id='durationInputUtilityBox' style='width: 100%' value='124'></textarea>
+					<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('durationInputUtilityBox'))">Reverse</button>
+					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilitySampleDiv')">Sample Rate  <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityReplaceDiv')">Replace  <span class='glyphicon glyphicon-list'></span></button> 
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button><br>
+					<div id='durationInputUtilityAddCommaDiv' class='util-div' style='display: none'>
+					<hr>
+					<br>
+					<b>These tools will help separate the data for use in other functions.<br>
+					This function is best used for data that isn't separated by anything and needs commas.<br>
+					If the data is already separated by something that isn't a comma, consider using the replace utility instead.</b><br><br>
+					<div class="horizontalAlignCenter">
+					Insert a comma every <input type="text" id='durationInputUtilityCommaValue' style='width: 40px' maxlength='4'> character(s). <button type="button" onclick='addCommas("#durationInputUtilityCommaValue", "#durationInputUtilityBox")'class="btn btn-default">Insert</button>
+					</div>
+					</div>
+					<div id='durationInputUtilityDecimalDiv' style='display: none'>
+						<hr>
+						<br>
+						<b>Use these tools to turn decimal numbers into a more playable form.</b><br><br>
+						<div class='horizontalAlignCenter'>
+						Multiply numbers by: <input type='text' id='durationInputUtilityMultiplyValue' style='width: 80px'>
+						<button type="button" class="btn btn-default" onclick="multiply(document.getElementById('durationInputUtilityMultiplyValue').value, document.getElementById('durationInputUtilityBox'))">Multiply</button>
+						</div>
+						<br>
+						<button type="button" class="btn btn-default" onclick="floor(document.getElementById('durationInputUtilityBox'))">Floor</button>
+						<button type="button" class="btn btn-default" onclick="ceiling(document.getElementById('durationInputUtilityBox'))">Ceiling</button>
+						<button type="button" class="btn btn-default" onclick="round(document.getElementById('durationInputUtilityBox'))">Round</button>
+					</div>
+					<div id='durationInputUtilityInvertDiv' class='util-div' style='display: none'>
+					<hr>
+					<br>
+					<b>Invert the values of the notes around a value, or around the average.
+						<br>High notes will become low notes, and low notes will become high notes.
+						<br><br>WARNING: If you choose to invert around your own value, be careful that <br>the resulting notes don't fall out of the playable range!</b><br><br>
+						<div class="horizontalAlignCenter">
+						Invert around a custom value: <input type="text" id='durationInputUtilityInvertValue' style='width: 40px' maxlength='4'>
+						<button type="button" class="btn btn-default" onclick="invertExplicit(document.getElementById('durationInputUtilityInvertValue').value, document.getElementById('durationInputUtilityBox'))">Invert</button>
+						</div><br>
+						<div class="horizontalAlignCenter">
+						Or invert around the average note for the stream: <button type="button" class="btn btn-default" onclick="invert(document.getElementById('durationInputUtilityBox'))">Invert via Average</button>
+						</div>
+					</div>
+					<div id='durationInputUtilitySampleDiv' class='util-div' style='display: none'>
+					<hr>
+					<br>
+					<b>Reduce the stream size by sampling every X note via the sampling types below.</b><br><br>
+						<div class="horizontalAlignCenter">
+						Sample Rate:
+						<input type='text' id='durationInputUtilitySampleInterval' style='width: 40px' maxlength='4'>
+						</div>
+						<br>
+						<div class="horizontalAlignCenter">
+						Sample type:
+						<button type="button" class="btn btn-default" onclick="sampleAverage(document.getElementById('durationInputUtilitySampleInterval').value, document.getElementById('durationInputUtilityBox'))">Average</button>
+						<button type="button" class="btn btn-default" onclick="sampleMedian(document.getElementById('durationInputUtilitySampleInterval').value, document.getElementById('durationInputUtilityBox'))">Median</button>
+						<button type="button" class="btn btn-default" onclick="sampleActual(document.getElementById('durationInputUtilitySampleInterval').value, document.getElementById('durationInputUtilityBox'))">Actual</button>
+						</div>	
+						<br>Not satisfied? <button type="button" class="btn btn-default" onclick="undo(document.getElementById('durationInputUtilityBox'))">Undo</button>
+					</div>
+					<div id='durationInputUtilityReplaceDiv' class="horizontalAlignCenter util-div" style='display: none'>
+					<hr>
+					<br>
+					<b>Replace characters in the stream.</b><br><br>
+					<button type="button" class="btn btn-default" onclick="replace(document.getElementById('durationInputUtilityBox'), document.getElementById('durationInputUtilityReplaceTarget'), document.getElementById('durationInputUtilityReplaceSubstitute'))" >Replace</button>
+					<input type='text' id='durationInputUtilityReplaceTarget' style='width: 36px' maxlength='3'> with <input type="text" id='durationInputUtilityReplaceSubstitute' style='width: 36px' maxlength='3'>
+					</div>
+					<div id='durationInputUtilityFilterDiv' class='util-div' style='display: none'>
+						<hr>
+						<br><b>Filter the notes by a range of values. All notes that do not fall in the range become zero. </b><br><br>
+						
+						<div class="horizontalAlignBottom">
+						Low: <input id="durationInputUtilityFilterRangeLow1" type="text" style="width: 36px">
+						High:<input id="durationInputUtilityFilterRangeHigh1" type="text" style="width: 36px">
+						<button id="durationInputUtilityFilterButton1" onclick="filter(document.getElementById('durationInputUtilityBox'), document.getElementById('durationInputUtilityFilterRangeLow1'), document.getElementById('durationInputUtilityFilterRangeHigh1'), document.getElementById('durationInputUtilityTextFilter1'))" type="button" class="btn btn-default">Filter</button>
+						<textarea readonly id='durationInputUtilityTextFilter1' style='width: 30%' value='124'></textarea>
+
+						Low: <input id="durationInputUtilityFilterRangeLow2" type="text" style="width: 36px">						
+						High:<input id="durationInputUtilityFilterRangeHigh2" type="text" style="width: 36px">
+						<button id="durationInputUtilityFilterButton2" onclick="filter(document.getElementById('durationInputUtilityBox'), document.getElementById('durationInputUtilityFilterRangeLow2'), document.getElementById('durationInputUtilityFilterRangeHigh2'), document.getElementById('durationInputUtilityTextFilter2'))" type="button" class="btn btn-default">Filter</button>
+						<textarea readonly id='durationInputUtilityTextFilter2' style='width: 30%' value='124'></textarea>
+						</div>
+						<br><br>
+						
+						
+						<div class="horizontalAlignBottom">
+						Low: <input id="durationInputUtilityFilterRangeLow3" type="text" style="width: 36px">
+						High:<input id="durationInputUtilityFilterRangeHigh3" type="text" style="width: 36px">
+						<button id="durationInputUtilityFilterButton3" onclick="filter(document.getElementById('durationInputUtilityBox'), document.getElementById('durationInputUtilityFilterRangeLow3'), document.getElementById('durationInputUtilityFilterRangeHigh3'), document.getElementById('durationInputUtilityTextFilter3'))" type="button" class="btn btn-default">Filter</button>
+						<textarea readonly id='durationInputUtilityTextFilter3' style='width: 30%' value='124'></textarea>
+
+						Low: <input id="durationInputUtilityFilterRangeLow4" type="text" style="width: 36px">						
+						High:<input id="durationInputUtilityFilterRangeHigh4" type="text" style="width: 36px">
+						<button id="durationInputUtilityFilterButton4" onclick="filter(document.getElementById('durationInputUtilityBox'), document.getElementById('durationInputUtilityFilterRangeLow4'), document.getElementById('durationInputUtilityFilterRangeHigh4'), document.getElementById('durationInputUtilityTextFilter4'))" type="button" class="btn btn-default">Filter</button>
+						<textarea readonly id='durationInputUtilityTextFilter4' style='width: 30%' value='124'></textarea>
+						</div>
+					</div>
+					
+				</div>
+				<div class='modal-footer'>
+					<button type='button' class='btn btn-success durationInputUtil-accept' onclick="acceptDurationInputUtilities()"><span class='glyphicon glyphicon-ok'></span> Apply</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END Duration Input Utiities Modal //-->
+    
+	    <!-- Pitch Mapping Utilities Dialog //-->
+	<div class='modal fade Utility-modal' id='pitchMapUtilityModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+		<div class='modal-dialog modal-xl'>
+			<div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3 class='modal-title' id='myModalLabel'>Data Utilities</h3>
+				</div>
+				<div class='modal-body'>
+					<textarea id='pitchMapUtilityBox' style='width: 100%' value='124'></textarea>
+					<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('pitchMapUtilityBox'))">Reverse</button>
+					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilitySampleDiv')">Sample Rate  <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityReplaceDiv')">Replace  <span class='glyphicon glyphicon-list'></span></button> 
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button><br>
+					<div id='pitchMapUtilityAddCommaDiv' class='util-div' style='display: none'>
+					<hr>
+					<br>
+					<b>These tools will help separate the data for use in other functions.<br>
+					This function is best used for data that isn't separated by anything and needs commas.<br>
+					If the data is already separated by something that isn't a comma, consider using the replace utility instead.</b><br><br>
+					<div class="horizontalAlignCenter">
+					Insert a comma every <input type="text" id='pitchMapUtilityCommaValue' style='width: 40px' maxlength='4'> character(s). <button type="button" onclick='addCommas("#pitchMapUtilityCommaValue", "#pitchMapUtilityBox")'class="btn btn-default">Insert</button>
+					</div>
+					</div>
+					<div id='pitchMapUtilityDecimalDiv' class='util-div' style='display: none'>
+						<hr>
+						<br>
+						<b>Use these tools to turn decimal numbers into a more playable form.</b><br><br>
+						<div class='horizontalAlignCenter'>
+						Multiply numbers by: <input type='text' id='pitchMapUtilityMultiplyValue' style='width: 80px'>
+						<button type="button" class="btn btn-default" onclick="multiply(document.getElementById('pitchMapUtilityMultiplyValue').value, document.getElementById('pitchMapUtilityBox'))">Multiply</button>
+						</div>
+						<br>
+						<button type="button" class="btn btn-default" onclick="floor(document.getElementById('pitchMapUtilityBox'))">Floor</button>
+						<button type="button" class="btn btn-default" onclick="ceiling(document.getElementById('pitchMapUtilityBox'))">Ceiling</button>
+						<button type="button" class="btn btn-default" onclick="round(document.getElementById('pitchMapUtilityBox'))">Round</button>
+					</div>
+					<div id='pitchMapUtilityInvertDiv' class='util-div' style='display: none'>
+					<hr>
+					<br>
+					<b>Invert the values of the notes around a value, or around the average.
+						<br>High notes will become low notes, and low notes will become high notes.
+						<br><br>WARNING: If you choose to invert around your own value, be careful that <br>the resulting notes don't fall out of the playable range!</b><br><br>
+						<div class="horizontalAlignCenter">
+						Invert around a custom value: <input type="text" id='pitchMapUtilityInvertValue' style='width: 40px' maxlength='4'>
+						<button type="button" class="btn btn-default" onclick="invertExplicit(document.getElementById('pitchMapUtilityInvertValue').value, document.getElementById('pitchMapUtilityBox'))">Invert</button>
+						</div><br>
+						<div class="horizontalAlignCenter">
+						Or invert around the average note for the stream: <button type="button" class="btn btn-default" onclick="invert(document.getElementById('pitchMapUtilityBox'))">Invert via Average</button>
+						</div>
+					</div>
+					<div id='pitchMapUtilitySampleDiv' class='util-div' style='display: none'>
+					<hr>
+					<br>
+					<b>Reduce the stream size by sampling every X note via the sampling types below.</b><br><br>
+						<div class="horizontalAlignCenter">
+						Sample Rate:
+						<input type='text' id='pitchMapUtilitySampleInterval' style='width: 40px' maxlength='4'>
+						</div>
+						<br>
+						<div class="horizontalAlignCenter">
+						Sample type:
+						<button type="button" class="btn btn-default" onclick="sampleAverage(document.getElementById('pitchMapUtilitySampleInterval').value, document.getElementById('pitchMapUtilityBox'))">Average</button>
+						<button type="button" class="btn btn-default" onclick="sampleMedian(document.getElementById('pitchMapUtilitySampleInterval').value, document.getElementById('pitchMapUtilityBox'))">Median</button>
+						<button type="button" class="btn btn-default" onclick="sampleActual(document.getElementById('pitchMapUtilitySampleInterval').value, document.getElementById('pitchMapUtilityBox'))">Actual</button>
+						</div>	
+						<br>Not satisfied? <button type="button" class="btn btn-default" onclick="undo(document.getElementById('pitchMapUtilityBox'))">Undo</button>
+					</div>
+					<div id='pitchMapUtilityReplaceDiv' class="horizontalAlignCenter util-div" style='display: none'>
+					<hr>
+					<br>
+					<b>Replace characters in the stream.</b><br><br>
+					<button type="button" class="btn btn-default" onclick="replace(document.getElementById('pitchMapUtilityBox'), document.getElementById('pitchMapUtilityReplaceTarget'), document.getElementById('pitchMapUtilityReplaceSubstitute'))" >Replace</button>
+					<input type='text' id='pitchMapUtilityReplaceTarget' style='width: 36px' maxlength='3'> with <input type="text" id='pitchMapUtilityReplaceSubstitute' style='width: 36px' maxlength='3'>
+					</div>
+					<div id='pitchMapUtilityFilterDiv' class='util-div' style='display: none'>
+						<hr>
+						<br><b>Parse the stream of notes by a range of values. All notes that do not fall in the range become zero. </b><br><br>
+						
+						<div class="horizontalAlignBottom">
+						Low: <input id="pitchMapUtilityFilterRangeLow1" type="text" style="width: 36px">
+						High:<input id="pitchMapUtilityFilterRangeHigh1" type="text" style="width: 36px">
+						<button id="pitchMapUtilityFilterButton1" onclick="filter(document.getElementById('pitchMapUtilityBox'), document.getElementById('pitchMapUtilityFilterRangeLow1'), document.getElementById('pitchMapUtilityFilterRangeHigh1'), document.getElementById('pitchMapUtilityTextFilter1'))" type="button" class="btn btn-default">Filter</button>
+						<textarea readonly id='pitchMapUtilityTextFilter1' style='width: 30%' value='124'></textarea>
+
+						Low: <input id="pitchMapUtilityFilterRangeLow2" type="text" style="width: 36px">						
+						High:<input id="pitchMapUtilityFilterRangeHigh2" type="text" style="width: 36px">
+						<button id="pitchMapUtilityFilterButton2" onclick="filter(document.getElementById('pitchMapUtilityBox'), document.getElementById('pitchMapUtilityFilterRangeLow2'), document.getElementById('pitchMapUtilityFilterRangeHigh2'), document.getElementById('pitchMapUtilityTextFilter2'))" type="button" class="btn btn-default">Filter</button>
+						<textarea readonly id='pitchMapUtilityTextFilter2' style='width: 30%' value='124'></textarea>
+						</div>
+						<br><br>
+						
+						
+						<div class="horizontalAlignBottom">
+						Low: <input id="pitchMapUtilityFilterRangeLow3" type="text" style="width: 36px">
+						High:<input id="pitchMapUtilityFilterRangeHigh3" type="text" style="width: 36px">
+						<button id="pitchMapUtilityFilterButton3" onclick="filter(document.getElementById('pitchMapUtilityBox'), document.getElementById('pitchMapUtilityFilterRangeLow3'), document.getElementById('pitchMapUtilityFilterRangeHigh3'), document.getElementById('pitchMapUtilityTextFilter3'))" type="button" class="btn btn-default">Filter</button>
+						<textarea readonly id='pitchMapUtilityTextFilter3' style='width: 30%' value='124'></textarea>
+
+						Low: <input id="pitchMapUtilityFilterRangeLow4" type="text" style="width: 36px">						
+						High:<input id="pitchMapUtilityFilterRangeHigh4" type="text" style="width: 36px">
+						<button id="pitchMapUtilityFilterButton4" onclick="filter(document.getElementById('pitchMapUtilityBox'), document.getElementById('pitchMapUtilityFilterRangeLow4'), document.getElementById('pitchMapUtilityFilterRangeHigh4'), document.getElementById('pitchMapUtilityTextFilter4'))" type="button" class="btn btn-default">Filter</button>
+						<textarea readonly id='pitchMapUtilityTextFilter4' style='width: 30%' value='124'></textarea>
+						</div>
+					</div>
+					
+				</div>
+				<div class='modal-footer'>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END Pitch Mapping Utiities Dialog //-->
+	
+	<!-- Duration Mapping Utilities Dialog //-->
+	<div class='modal fade Utility-modal' id='durationMapUtilityModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+		<div class='modal-dialog modal-xl'>
+			<div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3 class='modal-title' id='myModalLabel'>Data Utilities</h3>
+				</div>
+				<div class='modal-body'>
+					<textarea id='durationMapUtilityBox' style='width: 100%' value='124'></textarea>
+					<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('durationMapUtilityBox'))">Reverse</button>
+					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilitySampleDiv')">Sample Rate  <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityReplaceDiv')">Replace  <span class='glyphicon glyphicon-list'></span></button> 
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button><br>
+					<div id='durationMapUtilityAddCommaDiv' class='util-div' style='display: none'>
+					<hr>
+					<br>
+					<b>These tools will help separate the data for use in other functions.<br>
+					This function is best used for data that isn't separated by anything and needs commas.<br>
+					If the data is already separated by something that isn't a comma, consider using the replace utility instead.</b><br><br>
+					<div class="horizontalAlignCenter">
+					Insert a comma every <input type="text" id='durationMapUtilityCommaValue' style='width: 40px' maxlength='4'> character(s). <button type="button" onclick='addCommas("#durationMapUtilityCommaValue", "#durationMapUtilityBox")'class="btn btn-default">Insert</button>
+					</div>
+					</div>
+					<div id='durationMapUtilityDecimalDiv' class='util-div' style='display: none'>
+						<hr>
+						<br>
+						<b>Use these tools to turn decimal numbers into a more playable form.</b><br><br>
+						<div class='horizontalAlignCenter'>
+						Multiply numbers by: <input type='text' id='durationMapUtilityMultiplyValue' style='width: 80px'>
+						<button type="button" class="btn btn-default" onclick="multiply(document.getElementById('durationMapUtilityMultiplyValue').value, document.getElementById('durationMapUtilityBox'))">Multiply</button>
+						</div>
+						<br>
+						<button type="button" class="btn btn-default" onclick="floor(document.getElementById('durationMapUtilityBox'))">Floor</button>
+						<button type="button" class="btn btn-default" onclick="ceiling(document.getElementById('durationMapUtilityBox'))">Ceiling</button>
+						<button type="button" class="btn btn-default" onclick="round(document.getElementById('durationMapUtilityBox'))">Round</button>
+					</div>
+					<div id='durationMapUtilityInvertDiv' class='util-div' style='display: none'>
+					<hr>
+					<br>
+					<b>Invert the values of the notes around a value, or around the average.
+						<br>High notes will become low notes, and low notes will become high notes.
+						<br><br>WARNING: If you choose to invert around your own value, be careful that <br>the resulting notes don't fall out of the playable range!</b><br><br>
+						<div class="horizontalAlignCenter">
+						Invert around a custom value: <input type="text" id='durationMapUtilityInvertValue' style='width: 40px' maxlength='4'>
+						<button type="button" class="btn btn-default" onclick="invertExplicit(document.getElementById('durationMapUtilityInvertValue').value, document.getElementById('durationMapUtilityBox'))">Invert</button>
+						</div><br>
+						<div class="horizontalAlignCenter">
+						Or invert around the average note for the stream: <button type="button" class="btn btn-default" onclick="invert(document.getElementById('durationMapUtilityBox'))">Invert via Average</button>
+						</div>
+					</div>
+					<div id='durationMapUtilitySampleDiv' class='util-div' style='display: none'>
+					<hr>
+					<br>
+					<b>Reduce the stream size by sampling every X note via the sampling types below.</b><br><br>
+						<div class="horizontalAlignCenter">
+						Sample Rate:
+						<input type='text' id='durationMapUtilitySampleInterval' style='width: 40px' maxlength='4'>
+						</div>
+						<br>
+						<div class="horizontalAlignCenter">
+						Sample type:
+						<button type="button" class="btn btn-default" onclick="sampleAverage(document.getElementById('durationMapUtilitySampleInterval').value, document.getElementById('durationMapUtilityBox'))">Average</button>
+						<button type="button" class="btn btn-default" onclick="sampleMedian(document.getElementById('durationMapUtilitySampleInterval').value, document.getElementById('durationMapUtilityBox'))">Median</button>
+						<button type="button" class="btn btn-default" onclick="sampleActual(document.getElementById('durationMapUtilitySampleInterval').value, document.getElementById('durationMapUtilityBox'))">Actual</button>
+						</div>	
+					<br>Not satisfied? <button type="button" class="btn btn-default" onclick="undo(document.getElementById('durationMapUtilityBox'))">Undo</button>
+					</div>
+					<div id='durationMapUtilityReplaceDiv' class="horizontalAlignCenter util-div" style='display: none'>
+					<hr>
+					<br>
+					<b>Replace characters in the stream.</b><br><br>
+					<button type="button" class="btn btn-default" onclick="replace(document.getElementById('durationMapUtilityBox'), document.getElementById('durationMapUtilityReplaceTarget'), document.getElementById('durationMapUtilityReplaceSubstitute'))" >Replace</button>
+					<input type='text' id='durationMapUtilityReplaceTarget' style='width: 36px' maxlength='3'> with <input type="text" id='durationMapUtilityReplaceSubstitute' style='width: 36px' maxlength='3'>
+					</div>
+					<div id='durationMapUtilityFilterDiv' class='util-div' style='display: none'>
+						<hr>
+						<br><b>Parse the stream of notes by a range of values. All notes that do not fall in the range become zero. </b><br><br>
+						
+						<div class="horizontalAlignBottom">
+						Low: <input id="durationMapUtilityFilterRangeLow1" type="text" style="width: 36px">
+						High:<input id="durationMapUtilityFilterRangeHigh1" type="text" style="width: 36px">
+						<button id="durationMapUtilityFilterButton1" onclick="filter(document.getElementById('durationMapUtilityBox'), document.getElementById('durationMapUtilityFilterRangeLow1'), document.getElementById('durationMapUtilityFilterRangeHigh1'), document.getElementById('durationMapUtilityTextFilter1'))" type="button" class="btn btn-default">Filter</button>
+						<textarea readonly id='durationMapUtilityTextFilter1' style='width: 30%' value='124'></textarea>
+
+						Low: <input id="durationMapUtilityFilterRangeLow2" type="text" style="width: 36px">						
+						High:<input id="durationMapUtilityFilterRangeHigh2" type="text" style="width: 36px">
+						<button id="durationMapUtilityFilterButton2" onclick="filter(document.getElementById('durationMapUtilityBox'), document.getElementById('durationMapUtilityFilterRangeLow2'), document.getElementById('durationMapUtilityFilterRangeHigh2'), document.getElementById('durationMapUtilityTextFilter2'))" type="button" class="btn btn-default">Filter</button>
+						<textarea readonly id='durationMapUtilityTextFilter2' style='width: 30%' value='124'></textarea>
+						</div>
+						<br><br>
+						
+						
+						<div class="horizontalAlignBottom">
+						Low: <input id="durationMapUtilityFilterRangeLow3" type="text" style="width: 36px">
+						High:<input id="durationMapUtilityFilterRangeHigh3" type="text" style="width: 36px">
+						<button id="durationMapUtilityFilterButton3" onclick="filter(document.getElementById('durationMapUtilityBox'), document.getElementById('durationMapUtilityFilterRangeLow3'), document.getElementById('durationMapUtilityFilterRangeHigh3'), document.getElementById('durationMapUtilityTextFilter3'))" type="button" class="btn btn-default">Filter</button>
+						<textarea readonly id='durationMapUtilityTextFilter3' style='width: 30%' value='124'></textarea>
+
+						Low: <input id="durationMapUtilityFilterRangeLow4" type="text" style="width: 36px">						
+						High:<input id="durationMapUtilityFilterRangeHigh4" type="text" style="width: 36px">
+						<button id="durationMapUtilityFilterButton4" onclick="filter(document.getElementById('durationMapUtilityBox'), document.getElementById('durationMapUtilityFilterRangeLow4'), document.getElementById('durationMapUtilityFilterRangeHigh4'), document.getElementById('durationMapUtilityTextFilter4'))" type="button" class="btn btn-default">Filter</button>
+						<textarea readonly id='durationMapUtilityTextFilter4' style='width: 30%' value='124'></textarea>
+						</div>
+					</div>
+					
+				</div>
+				<div class='modal-footer'>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END Duration Mapping Utiities Dialog //-->
+	
+	<!-- Scale Mapping Utilities Dialog //-->
+	<div class='modal fade Utility-modal' id='scaleUtilityModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+		<div class='modal-dialog modal-xl'>
+			<div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3 class='modal-title' id='myModalLabel'>Data Utilities</h3>
+				</div>
+				<div class='modal-body'>
+					<textarea id='scaleUtilityBox' style='width: 100%' value='124'></textarea>
+					<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('scaleUtilityBox'))">Reverse</button>
+					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#scaleUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#scaleUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#scaleUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#scaleUtilitySampleDiv')">Sample Rate  <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#scaleUtilityReplaceDiv')">Replace  <span class='glyphicon glyphicon-list'></span></button> 
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#scaleUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button><br>
+					<div id='scaleUtilityAddCommaDiv' class='util-div' style='display: none'>
+					<hr>
+					<br>
+					<b>These tools will help separate the data for use in other functions.<br>
+					This function is best used for data that isn't separated by anything and needs commas.<br>
+					If the data is already separated by something that isn't a comma, consider using the replace utility instead.</b><br><br>
+					<div class="horizontalAlignCenter">
+					Insert a comma every <input type="text" id='scaleUtilityCommaValue' style='width: 40px' maxlength='4'> character(s). <button type="button" onclick='addCommas("#scaleUtilityCommaValue", "#scaleUtilityBox")'class="btn btn-default">Insert</button>
+					</div>
+					</div>
+					<div id='scaleUtilityDecimalDiv' class='util-div' style='display: none'>
+						<hr>
+						<br>
+						<b>Use these tools to turn decimal numbers into a more playable form.</b><br><br>
+						<div class='horizontalAlignCenter'>
+						Multiply numbers by: <input type='text' id='scaleUtilityMultiplyValue' style='width: 80px'>
+						<button type="button" class="btn btn-default" onclick="multiply(document.getElementById('scaleUtilityMultiplyValue').value, document.getElementById('scaleUtilityBox'))">Multiply</button>
+						</div>
+						<br>
+						<button type="button" class="btn btn-default" onclick="floor(document.getElementById('scaleUtilityBox'))">Floor</button>
+						<button type="button" class="btn btn-default" onclick="ceiling(document.getElementById('scaleUtilityBox'))">Ceiling</button>
+						<button type="button" class="btn btn-default" onclick="round(document.getElementById('scaleUtilityBox'))">Round</button>
+					</div>
+					<div id='scaleUtilityInvertDiv' class='util-div' style='display: none'>
+					<hr>
+					<br>
+					<b>Invert the values of the notes around a value, or around the average.
+						<br>High notes will become low notes, and low notes will become high notes.
+						<br><br>WARNING: If you choose to invert around your own value, be careful that <br>the resulting notes don't fall out of the playable range!</b><br><br>
+						<div class="horizontalAlignCenter">
+						Invert around a custom value: <input type="text" id='scaleUtilityInvertValue' style='width: 40px' maxlength='4'>
+						<button type="button" class="btn btn-default" onclick="invertExplicit(document.getElementById('scaleUtilityInvertValue').value, document.getElementById('scaleUtilityBox'))">Invert</button>
+						</div><br>
+						<div class="horizontalAlignCenter">
+						Or invert around the average note for the stream: <button type="button" class="btn btn-default" onclick="invert(document.getElementById('scaleUtilityBox'))">Invert via Average</button>
+						</div>
+					</div>
+					<div id='scaleUtilitySampleDiv' class='util-div' style='display: none'>
+					<hr>
+					<br>
+					<b>Reduce the stream size by sampling every X note via the sampling types below.</b><br><br>
+						<div class="horizontalAlignCenter">
+						Sample Rate:
+						<input type='text' id='scaleUtilitySampleInterval' style='width: 40px' maxlength='4'>
+						</div>
+						<br>
+						<div class="horizontalAlignCenter">
+						Sample type:
+						<button type="button" class="btn btn-default" onclick="sampleAverage(document.getElementById('scaleUtilitySampleInterval').value, document.getElementById('scaleUtilityBox'))">Average</button>
+						<button type="button" class="btn btn-default" onclick="sampleMedian(document.getElementById('scaleUtilitySampleInterval').value, document.getElementById('scaleUtilityBox'))">Median</button>
+						<button type="button" class="btn btn-default" onclick="sampleActual(document.getElementById('scaleUtilitySampleInterval').value, document.getElementById('scaleUtilityBox'))">Actual</button>
+						</div>	
+						<br>Not satisfied? <button type="button" class="btn btn-default" onclick="undo(document.getElementById('scaleUtilityBox'))">Undo</button>
+					</div>
+					<div id='scaleUtilityReplaceDiv'  class="horizontalAlignCenter util-div" style='display: none'>
+					<hr>
+					<br>
+					<b>Replace characters in the stream.</b><br><br>
+					<button type="button" class="btn btn-default" onclick="replace(document.getElementById('scaleUtilityBox'), document.getElementById('scaleUtilityReplaceTarget'), document.getElementById('scaleUtilityReplaceSubstitute'))" >Replace</button>
+					<input type='text' id='scaleUtilityReplaceTarget' style='width: 36px' maxlength='3'> with <input type="text" id='scaleUtilityReplaceSubstitute' style='width: 36px' maxlength='3'>
+					</div>
+					<div id='scaleUtilityFilterDiv' class='util-div' style='display: none'>
+						<hr>
+						<br><b>Parse the stream of notes by a range of values. All notes that do not fall in the range become zero. </b><br><br>
+						
+						<div class="horizontalAlignBottom">
+						Low: <input id="scaleUtilityFilterRangeLow1" type="text" style="width: 36px">
+						High:<input id="scaleUtilityFilterRangeHigh1" type="text" style="width: 36px">
+						<button id="scaleUtilityFilterButton1" onclick="filter(document.getElementById('scaleUtilityBox'), document.getElementById('scaleUtilityFilterRangeLow1'), document.getElementById('scaleUtilityFilterRangeHigh1'), document.getElementById('scaleUtilityTextFilter1'))" type="button" class="btn btn-default">Filter</button>
+						<textarea readonly id='scaleUtilityTextFilter1' style='width: 30%' value='124'></textarea>
+
+						Low: <input id="scaleUtilityFilterRangeLow2" type="text" style="width: 36px">						
+						High:<input id="scaleUtilityFilterRangeHigh2" type="text" style="width: 36px">
+						<button id="scaleUtilityFilterButton2" onclick="filter(document.getElementById('scaleUtilityBox'), document.getElementById('scaleUtilityFilterRangeLow2'), document.getElementById('scaleUtilityFilterRangeHigh2'), document.getElementById('scaleUtilityTextFilter2'))" type="button" class="btn btn-default">Filter</button>
+						<textarea readonly id='scaleUtilityTextFilter2' style='width: 30%' value='124'></textarea>
+						</div>
+						<br><br>
+						
+						
+						<div class="horizontalAlignBottom">
+						Low: <input id="scaleUtilityFilterRangeLow3" type="text" style="width: 36px">
+						High:<input id="scaleUtilityFilterRangeHigh3" type="text" style="width: 36px">
+						<button id="scaleUtilityFilterButton3" onclick="filter(document.getElementById('scaleUtilityBox'), document.getElementById('scaleUtilityFilterRangeLow3'), document.getElementById('scaleUtilityFilterRangeHigh3'), document.getElementById('scaleUtilityTextFilter3'))" type="button" class="btn btn-default">Filter</button>
+						<textarea readonly id='scaleUtilityTextFilter3' style='width: 30%' value='124'></textarea>
+
+						Low: <input id="scaleUtilityFilterRangeLow4" type="text" style="width: 36px">						
+						High:<input id="scaleUtilityFilterRangeHigh4" type="text" style="width: 36px">
+						<button id="scaleUtilityFilterButton4" onclick="filter(document.getElementById('scaleUtilityBox'), document.getElementById('scaleUtilityFilterRangeLow4'), document.getElementById('scaleUtilityFilterRangeHigh4'), document.getElementById('scaleUtilityTextFilter4'))" type="button" class="btn btn-default">Filter</button>
+						<textarea readonly id='scaleUtilityTextFilter4' style='width: 30%' value='124'></textarea>
+						</div>
+					</div>
+					
+				</div>
+				<div class='modal-footer'>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END Scale Utiities Dialog //-->
+    
+    <!-- Overall Container //-->
+    <div id="main_container">
+
+        <!-- Content area //-->
+        <!-- Enter your content in the div with the correct class name //-->
+        <div id="content_container">
+
+            <div id="options">
+
+                <div id="tabs_container" style="visibility: hidden;">
+                    <!-- Where the tabs will be placed //-->
+                </div>
+
+                <div class="btn-group" id="options_buttons">
+					
+                    <button type="button" class="btn btn-default btn-sm save_option" data-toggle="modal" data-target="#saveModal"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
+                    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#loadModal"><span class="glyphicon glyphicon-folder-open"></span> Load</button>
+
+                    <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="viewMenu">
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="" id="full"><span class="glyphicon glyphicon-th"></span> Full View</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="" id="tab"><span class="glyphicon glyphicon-align-justify"></span> Tabbed View</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div id="content">
+
+                <!-- Welcome Screen //-->
+                <div class="welcome">
+                    <h2>Welcome!</h2>
+                        <h5>CREATE YOUR OWN MUSIC</h5>
+                        <p>Algorithms and Interactive Tools for Exploring Music Composition, Analysis, and Interdisciplinary Learning.
+                        <br />This Web site has interactive tools that provide a unique learning experience for users, regardless of their musical training. Students of music composition can explore algorithmic composition, while others can create musical representations of models for the purpose of aural interpretation and analysis. Here, the algorithmic process is used in a creative context so that users can convert sequences of numbers into sounds.
+                                                <br><br />Looking for v3.0? Click <a href="http://musicalgorithms.org/3.0/index.html">here</a>
+                                                <br />Looking for v2.0? Click <a href="http://musicalgorithms.org/index.php">here</a> 
+						<br />Looking for v1.0? Click <a href="http://musicalgorithms.ewu.edu/">here</a>                     
+</p>
+                        <blockquote>
+					<small>
+					Project Director:
+					<br />Jonathan N. Middleton, D.M.A.
+					<br />Professor of Theory and Composition
+					<br />Eastern Washington University
+					<br />musicalgorithms.ewu.edu
+					</small>
+				</blockquote>
+				<sub style="color: #777;">Music Algorithms updated & refactored by: Isaac Deal, Cody Demianew, Tyler Herrin, Anna Kravtsova, and Evan Nilson.</sub>
+
+                </div>
+
+                <div class="pitch_input" style="display: none;"> 
+                </div>
+
+                <div class="duration_input" style="display: none;">
+                </div>
+
+                <div class="pitch_mapping" style="display: none;">
+                </div>
+
+                <div class="duration_mapping" style="display: none;">
+                </div>
+
+                <div class="scale_options" style="display: none;">
+                </div>
+
+                <div class="play" style="display: none;">
+                    <div id="voice_container_div">
+
+                    </div>
+                    <div class="progressDiv">Progress:
+                        <input type="range" id="progress" value="0" onchange="setControls()" max="1000" min="0">
+                        <Label id="counter">0 of 24</label>
+
+                    </div>
+                    <div class="player">
+                        <form id="download" action="js/php/createMidi.php" method="post">
+                            <input type="hidden" id="notedata" name="notedata">
+							 <input type="hidden" id="binaryStream" name="binaryStream">
+                        </form>
+						
+                        <div>Tempo:
+                            <input type="range" id="tempo" value="120" onchange="" style="width:80%" max="240" min="1">
+                            <Label id='bpm' style="float:right">120 bpm</label>
+                        </div>
+                    </div>
+                    
+                    <div class="player_options">
+                        <button class="btn btn-success player-play"><span class=" glyphicon glyphicon-play"></span> Play</button>
+                        <button class="btn btn-warning player-pause"><span class=" glyphicon glyphicon-pause"></span> Pause</button>
+                        <button class="btn btn-danger player-stop"> <span class="glyphicon glyphicon-stop"></span> Stop</button>
+                    </div>
+                    <!--end player-->
+
+                    <div id="pianoBody">
+							<div id="o00" class="octave">
+								<div class="keyWhite" id="1" style="width:50%"></div>
+								<div class="keyWhite" id="3" style="width:50%"></div>
+								<div class="keyBlack" id="2" style="width:25%; left:35.16%"></div>
+							</div>
+							<div id="o0" class="octave">
+								<div class="keyWhite" id="4"></div>
+								<div class="keyWhite" id="6"></div>
+								<div class="keyWhite" id="8"></div>
+								<div class="keyWhite" id="9"></div>
+								<div class="keyWhite" id="11"></div>
+								<div class="keyWhite" id="13"></div>
+								<div class="keyWhite" id="15"></div>
+								<div class="flats">
+								<div class="keyBlack" id="5"></div>
+								<div class="keyBlack" id="7"></div>
+								<div class="keyBlack" id="10"></div>
+								<div class="keyBlack" id="12"></div>
+								<div class="keyBlack" id="14"></div></div>
+							</div>
+							<div id="o1" class="octave">
+								<div class="keyWhite" id="16"></div>
+								<div class="keyWhite" id="18"></div>
+								<div class="keyWhite" id="20"></div>
+								<div class="keyWhite" id="21"></div>
+								<div class="keyWhite" id="23"></div>
+								<div class="keyWhite" id="25"></div>
+								<div class="keyWhite" id="27"></div>
+								<div class="flats">
+								<div class="keyBlack" id="17"></div>
+								<div class="keyBlack" id="19"></div>
+								<div class="keyBlack" id="22"></div>
+								<div class="keyBlack" id="24"></div>
+								<div class="keyBlack" id="26"></div></div>
+							</div>
+							<div id="o2" class="octave">
+								<div class="keyWhite" id="28"></div>
+								<div class="keyWhite" id="30"></div>
+								<div class="keyWhite" id="32"></div>
+								<div class="keyWhite" id="33"></div>
+								<div class="keyWhite" id="35"></div>
+								<div class="keyWhite" id="37"></div>
+								<div class="keyWhite" id="39"></div>
+								<div class="flats">
+								<div class="keyBlack" id="29"></div>
+								<div class="keyBlack" id="31"></div>
+								<div class="keyBlack" id="34"></div>
+								<div class="keyBlack" id="36"></div>
+								<div class="keyBlack" id="38"></div></div>
+							</div>
+							<div id="o3" class="octave">
+								<div class="keyWhite" id="40"></div>
+								<div class="keyWhite" id="42"></div>
+								<div class="keyWhite" id="44"></div>
+								<div class="keyWhite" id="45"></div>
+								<div class="keyWhite" id="47"></div>
+								<div class="keyWhite" id="49"></div>
+								<div class="keyWhite" id="51"></div>
+								<div class="flats">
+								<div class="keyBlack" id="41"></div>
+								<div class="keyBlack" id="43"></div>
+								<div class="keyBlack" id="46"></div>
+								<div class="keyBlack" id="48"></div>
+								<div class="keyBlack" id="50"></div></div>
+							</div>
+							<div id="o4" class="octave">
+								<div class="keyWhite" id="52"></div>
+								<div class="keyWhite" id="54"></div>
+								<div class="keyWhite" id="56"></div>
+								<div class="keyWhite" id="57"></div>
+								<div class="keyWhite" id="59"></div>
+								<div class="keyWhite" id="61"></div>
+								<div class="keyWhite" id="63"></div>
+								<div class="flats">
+								<div class="keyBlack" id="53"></div>
+								<div class="keyBlack" id="55"></div>
+								<div class="keyBlack" id="58"></div>
+								<div class="keyBlack" id="60"></div>
+								<div class="keyBlack" id="62"></div></div>
+							</div>
+							<div id="o5" class="octave">
+								<div class="keyWhite" id="64"></div>
+								<div class="keyWhite" id="66"></div>
+								<div class="keyWhite" id="68"></div>
+								<div class="keyWhite" id="69"></div>
+								<div class="keyWhite" id="71"></div>
+								<div class="keyWhite" id="73"></div>
+								<div class="keyWhite" id="75"></div>
+								<div class="flats">
+								<div class="keyBlack" id="65"></div>
+								<div class="keyBlack" id="67"></div>
+								<div class="keyBlack" id="70"></div>
+								<div class="keyBlack" id="72"></div>
+								<div class="keyBlack" id="74"></div></div>
+							</div>
+
+							<div id="o6" class="octave">
+								<div class="keyWhite" id="76"></div>
+								<div class="keyWhite" id="78"></div>
+								<div class="keyWhite" id="80"></div>
+								<div class="keyWhite" id="81"></div>
+								<div class="keyWhite" id="83"></div>
+								<div class="keyWhite" id="85"></div>
+								<div class="keyWhite" id="87"></div>
+								<div class="flats">
+								<div class="keyBlack" id="77"></div>
+								<div class="keyBlack" id="79"></div>
+								<div class="keyBlack" id="82"></div>
+								<div class="keyBlack" id="84"></div>
+								<div class="keyBlack" id="86"></div></div>
+							</div>
+							<div id="o7" class="octave">
+								<div class="keyWhite" id="88" style="width:100%"></div>
+							</div>
+						</div><!--End piano body-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load in external Javascript files //-->
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.transit.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    
+    	<script src="js/simple-slider.js"></script>
+
+	
+    <!-- midi.js package -->
+    <script src="js/midiJs/base64.js"></script>
+	<script src="js/midiJs/MIDI.js" type="text/javascript"></script>
+    <script src="/js/midiJs/MIDI/AudioDetect.js" type="text/javascript"></script>
+    <script src="/js/midiJs/MIDI/LoadPlugin.js" type="text/javascript"></script>
+	<script src="/js/midiJs/MIDI/gm.js" type="text/javascript"></script>
+	<script src="/js/midiJs/MIDI/plugin.webaudio.js" type="text/javascript"></script>
+	<script src="/js/midiJs/MIDI/plugin.audiotag.js" type="text/javascript"></script>
+	<script src="/js/midiJs/MIDI/plugin.webmidi.js" type="text/javascript"></script>
+    <script src="/js/midiJs/MIDI/Player.js" type="text/javascript"></script>
+	<script src="/js/midiJs/jasmid/replayer.js" type="text/javascript"></script>
+	<script src="/js/midiJs/jasmid/stream.js" type="text/javascript"></script>
+	<script src="/js/midiJs/jasmid/midifile.js" type="text/javascript"></script>
+	<script src="/js/midiJs/base64.js" type="text/javascript"></script>
+	<script src="/js/midiJs/Widgets/Loader.js"></script>
+    <script src="/js/midiJs/Window/DOMLoader.XMLHttp.js" type="text/javascript"></script>
+    <!-- ----------- //-->
+    <!-- Custom Code //-->
+    <script src="js/DefaultInit.js"></script> <!--Added 1/7-->
+    <script src="js/biologyFunctions.js"></script> <!--Added 1/31-->
+    <script src="js/selectAlgorithm.js"></script>
+    <script src="js/normalization.js"></script>
+    <script src="js/information.js"></script>
+    <script src="js/welcome.js"></script>
+    <script src="js/WebSiteFunctions.js"></script> <!--Added-->
+    <script src="js/VoiceObject.js"></script> <!--Added-->
+    <script src="js/biologyObject.js"></script>
+	<script src="js/preInputUtilities.js"></script> <!--New-->
+    <script src="js/pitchInput.js"></script>
+    <script src="js/durationInput.js"></script>
+    <script src="js/pitchMapping.js"></script>
+    <script src="js/durationMapping.js"></script>
+    <script src="js/scaleOptions.js"></script>
+    <script src="js/play.js"></script>
+	<script src="js/midi.js"></script>
+    <!-- Javascript to get tabs to switch content divs //-->
+    <script src="js/FrontEnd.js"></script>
+
+</body>
+
+</html>
