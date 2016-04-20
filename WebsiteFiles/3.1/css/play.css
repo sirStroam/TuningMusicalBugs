@@ -1,0 +1,151 @@
+.play
+{
+	background:#333333;
+	height:200px;
+}
+.voice
+{
+
+}
+
+
+
+#voice_container_div
+{
+	height:300px;
+	background:#333333;
+}
+#progress
+{
+	width:80%;
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+}
+#counter
+{
+	float:right;
+	
+	position:relative;
+}
+.play_voice
+{
+	width:90%;
+	height:20%; 
+	Position:relative; 
+	margin:.5%; 
+	left:5%; 
+	top:2%; 
+	background:#c0c0c0; 
+	border-radius:5px;
+	
+	
+}
+.player
+{
+	
+	width:60%;
+	height:30%;
+	background:#808080; 
+	margin-left:auto;
+	margin-right:auto;
+}
+.progressDiv
+{
+	width:90%;
+	height:20%; 
+	Position:relative; 
+	margin:.5%; 
+	left:5%; 
+	top:2%; 
+	background:#808080; 
+	border-radius:5px;
+}
+
+
+.play_voice .output
+{
+	display:block;
+	margin:0;
+	background:black;
+	color:white;
+	width:43%;
+	float:right;
+	
+	
+	
+}
+
+.cur 
+{
+	width:3%;
+
+	
+	
+}
+.play_voice input
+{ 
+	float:right;
+}
+
+
+#pianoBody
+{
+	
+	width:100%;
+	height:100px;
+	background:green;
+	Position:relative; 
+}
+#o00
+{
+width:3.846%;
+}
+#o7
+{
+width:1.923%;
+}
+.octave {
+
+	float: left;
+	position:relative;
+	width:13.461%;
+	height:100%;
+} 
+.keyWhite
+{
+	background:white;
+	height:100%;
+	width:14.285%;
+	outline:1px solid;
+	float:left;
+	position:relative;
+}
+.keyBlack
+{
+	background:black;
+	height:66.66%;
+	width:7.1425%;
+	outline:1px solid;
+	float:left;
+	position: absolute;
+	
+}
+div.flats {
+
+}
+div.flats :nth-child(1) {
+	margin-left:10.7135% /*3.846%;*/
+}
+div.flats :nth-child(2) {
+	margin-left: 24.99875%/*5.769%;*/
+}
+div.flats :nth-child(3) {
+	margin-left: 53.56875%/*9.615%;*/
+}
+div.flats :nth-child(4) {
+	margin-left: 67.85375%/*11.538%*/;
+}
+div.flats :nth-child(5) {
+	margin-left: 82.1385%;
+}

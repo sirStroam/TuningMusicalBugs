@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Testing</title>
+
+    	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
+	<script type="text/javascript" src="graph.js"></script>
+	<script src="jquery.js"></script>
+	<script src="jquery-ui.js"></script>
+	<script src="simple-slider.js"></script>
+	<script src="morph.js" charset="utf-8"></script>
+
+	<link rel="stylesheet" type="text/css" href="graph.css"> 
+	<link href="simple-slider.css" rel="stylesheet" type="text/css" />
+
+
+  <style>
+  [class^=slider] { display: inline-block; margin-bottom: 30px; }
+  .output { color: #888; font-size: 14px; padding-top: 1px; margin-left: 5px; vertical-align: top;}
+  </style>
+
+</head>
+<body>
+	<div id="mygraph"></div>
+	<textarea id="morphBox" style="width: 100%" value="124" readonly></textarea>
+
+
+
+  <input id="slide" onchange="update()" data-slider="true" data-slider-step="1" data-slider-range="1,100">
+
+	<button id="but" type="button">Testing</button> 
+
+  <script>
+  $("[data-slider]")
+    .each(function () {
+      var input = $(this);
+      $("<span>")
+        .addClass("output")
+        .insertAfter($(this));
+    })
+    .bind("slider:ready slider:changed", function (event, data) {
+      $(this)
+        .nextAll(".output:first")
+          .html(data.value.toFixed(0)+"%");	
+    });
+  </script>
+ 
+</body>
+</html>

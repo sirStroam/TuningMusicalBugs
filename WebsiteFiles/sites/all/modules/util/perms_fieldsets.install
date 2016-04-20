@@ -1,0 +1,14 @@
+<?php
+/**
+ * @file
+ * Util / Admin Page Fieldsets - module installation and uninstallation.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function perms_fieldsets_uninstall() {
+  variable_del('perms_fieldsets_modules_packages');
+  variable_del('perms_fieldsets_module_weight');
+  variable_del('perms_fieldsets_permissions_modules');
+}

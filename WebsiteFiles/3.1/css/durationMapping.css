@@ -1,0 +1,66 @@
+.clearfix:after {
+	content: ".";
+	display: block;
+	
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+.clearfix {
+	
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}
+.welcome 
+{
+	background:#bfc284;
+	font-weight:bold;
+	
+}
+#welcomelab
+{
+padding: 1%;
+font-size: 250%;
+}
+#dminput
+{
+	
+    width:95%;
+	height:10%;
+	
+}
+.voice_1
+{
+	background:#bfc284;
+	width:50%;
+	margin:auto;
+	border:2px;
+	padding-left:1%;
+	padding-right:1%;
+	
+	
+}
+.voice_2
+{
+	background:#bfc284;
+	width:50%;
+	margin:auto;
+	border:2px;
+	padding-left:1%;
+	padding-right:1%;
+	
+	
+}
+input
+{
+	width:10%;
+	
+	
+}

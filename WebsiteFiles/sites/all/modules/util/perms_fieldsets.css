@@ -1,0 +1,17 @@
+/**
+ * @file
+ * Util / Admin Page Fieldsets - Style sheet.
+ */
+
+#system-modules #edit-perms-fieldsets-list .form-checkboxes .form-item,
+#user-admin-permissions #edit-perms-fieldsets-list .form-checkboxes .form-item {
+  float: left;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 24%;
+}
+
+#system-modules #edit-perms-fieldsets-list .description,
+#user-admin-permissions #edit-perms-fieldsets-list .description {
+  clear: both;
+}
