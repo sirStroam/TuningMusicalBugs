@@ -108,11 +108,16 @@ function addMorphButton($elem)
 
 /*
 	This removes the morph button.
+    
+    EXTRA OUTPUT BUG: this is the EXTRA Output that is getting added on. dunno why yet.
+    -was location of the bug, fixed the extra Output being added by removing the text
+    
+    -NEED to keep the label or else the rest of the output will be lost randomly, must be tied to it somewhere else
 */
 function removeMorphButton($elem)
 {
 	// Add button to reopen morph window
-    $elem.find("select").eq(1).next().replaceWith("<label>Output:</label>");
+    $elem.find("select").eq(1).next().replaceWith("<label> </label>");
 }
 
 /*
@@ -287,6 +292,9 @@ function LoadScaleOptionsInputTextBox(voices, voiceTotal) {
 
 /*
 	This is the Website panel GUI.
+    
+    EXTRA OUTPUT: This is NOT the one getting added on change
+    this is the location of the original.
 */
 function scaleOptions(numberOfVoice) {
     var voiceCount = numberOfVoice;

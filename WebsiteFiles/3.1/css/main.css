@@ -7,6 +7,17 @@
 /* ----- Helper Mixins ----- */
 /* ----- Page Styles ------ */
 /* Base Styles */
+
+/* manual text insert text box resizing
+    added 4/26/2016 - david walker
+*/
+input
+{
+    width: 4em;
+    margin-left: 4px;
+    margin-right: 4px;    
+}
+
 #note_count1,#note_count2,#note_count3,#note_count4{
 	width:50px;
 }
