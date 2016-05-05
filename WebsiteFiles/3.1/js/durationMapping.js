@@ -398,7 +398,7 @@ function durationMapping(numberOfVoice) {
 					<legend>Modifications</legend>\
 					<label>Replace all:</label><input type='text' id='dModiAll"+ voiceCount + "' >\
 					<label>with:</label><input type='text' id='dModiWith"+ voiceCount + "'>\
-					<br /><button type='button' id='dModify"+ voiceCount + "' value='Modify'>Modify Output</button>\
+					&nbsp;<button type='button' id='dModify"+ voiceCount + "' value='Modify'>Modify Output</button>\
 				</fieldset>\
 			</fieldset>\
 		</div>\

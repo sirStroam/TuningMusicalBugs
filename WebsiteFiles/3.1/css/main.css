@@ -8,6 +8,33 @@
 /* ----- Page Styles ------ */
 /* Base Styles */
 
+#maint
+{
+    width: 45%;
+    min-height: 100px;
+    min-width: 400px;
+    border: 5px solid red;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+/*    display: none; */ /* comment/uncomment to show/hide */
+}
+
+#maint img
+{
+    width: 100px;
+    margin-left: 1em;
+}
+
+#maint h3
+{
+    margin-top: 10px;
+    width: 65%;
+    float: right;
+    font-size: 110%;
+    margin-right: 11px;
+    letter-spacing: 0px;
+}
+
 /* manual text insert text box resizing
     added 4/26/2016 - david walker
 */
@@ -132,7 +159,7 @@ header {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  margin: 0px 0px 15px 10%;
+  margin: 0px 0px 1em 10%;
   width: 80%; }
   #main_container:before, #main_container:after {
     content: " ";
@@ -150,7 +177,9 @@ header {
 
 #content {
   *zoom: 1;
-  display: block; }
+  display: block; 
+padding: 0em 1em 1em 1em;
+}
   #content:before, #content:after {
     content: " ";
     display: table; }

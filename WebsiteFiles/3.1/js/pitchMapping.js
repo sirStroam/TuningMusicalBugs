@@ -430,7 +430,7 @@ function pitchMapping(numberOfVoice) {
 			<!--		<input name='addSilence' type='checkbox'><label>Add Silence</label>\
 					<label>Value of silence:</label><input type='text' name='valueSilence' >\
 					<img id='silenceImg"+ voiceCount + "'>\
-			-->		<br /><button type='button' id='modify"+ voiceCount + "' value='Modify'>Modify Output</button>\
+			-->		&nbsp;<button type='button' id='modify"+ voiceCount + "' value='Modify'>Modify Output</button>\
 				</fieldset>\
 			</fieldset>\
 		</div>\
