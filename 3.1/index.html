@@ -512,14 +512,27 @@
 				</div>
 				<div class='modal-body'>
 					<textarea id='durationMapUtilityBox' style='width: 100%' value='124'></textarea>
-					<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('durationMapUtilityBox'))">Reverse</button>
-					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilitySampleDiv')">Sample Rate  <span class='glyphicon glyphicon-list'></span></button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityReplaceDiv')">Replace  <span class='glyphicon glyphicon-list'></span></button> 
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button><br>
+                    
+                        <button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('durationMapUtilityBox'))" onmouseover="toggleSelection('#durationMapUtilityReverseOrASCII')">Reverse  </button>
+                    
+				        <button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))" onmouseover="toggleSelection('#durationMapUtilityReverseOrASCII')">ASCII Conversion</button>
+                    
+				        <button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
+                    
+				        <button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
+                    
+				        <button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
+                    
+				        <button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilitySampleDiv')">Sample Rate  <span class='glyphicon glyphicon-list'></span></button>
+                    
+				        <button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityReplaceDiv')">Replace  <span class='glyphicon glyphicon-list'></span></button> 
+                    
+				        <button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button><br>
+                    
+                    <div id='durationMapUtilityReverseOrASCII' class='util-div' style='display: none'>
+                    <!-- blank div to remove details -->
+                    </div>
+                    
 					<div id='durationMapUtilityAddCommaDiv' class='util-div' style='display: none'>
 					<hr>
 					<br>
