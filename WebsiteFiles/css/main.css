@@ -546,9 +546,11 @@ div.graph-tooltip-label td {
 .morph-modal .modal-dialog {
   width: 75%; }
 
-  
+/* Utility Window */
 .modal-header {
   background: #49463f;
+  border-bottom:4px solid #ee5f5b;
+    
 }
 
 .modal-title {
