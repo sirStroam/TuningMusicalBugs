@@ -517,20 +517,20 @@
                     
 				        <button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))" onmouseover="toggleSelection('#durationMapUtilityReverseOrASCII')">ASCII Conversion</button>
                     
-				        <button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
+				        <button type="button" class="btn btn-default" onmouseover="toggleSelection('#durationMapUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
                     
-				        <button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
+				        <button type="button" class="btn btn-default" onmouseover="toggleSelection('#durationMapUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
                     
-				        <button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
+				        <button type="button" class="btn btn-default" onmouseover="toggleSelection('#durationMapUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
                     
-				        <button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilitySampleDiv')">Sample Rate  <span class='glyphicon glyphicon-list'></span></button>
+				        <button type="button" class="btn btn-default" onmouseover="toggleSelection('#durationMapUtilitySampleDiv')">Sample Rate  <span class='glyphicon glyphicon-list'></span></button>
                     
-				        <button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityReplaceDiv')">Replace  <span class='glyphicon glyphicon-list'></span></button> 
+				        <button type="button" class="btn btn-default" onmouseover="toggleSelection('#durationMapUtilityReplaceDiv')">Replace  <span class='glyphicon glyphicon-list'></span></button> 
                     
-				        <button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button><br>
+				        <button type="button" class="btn btn-default" onmouseover="toggleSelection('#durationMapUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button><br>
                     
                     <div id='durationMapUtilityReverseOrASCII' class='util-div' style='display: none'>
-                    <!-- blank div to remove details -->
+                    <!-- blank div to remove details for Reverse and ASCII Conversion-->
                     </div>
                     
 					<div id='durationMapUtilityAddCommaDiv' class='util-div' style='display: none'>
@@ -627,7 +627,7 @@
 					
 				</div>
 				<div class='modal-footer'>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal" onclick='dMapArea1.value = durationMapUtilityBox.value'>Close</button>
 				</div>
 			</div>
 		</div>
