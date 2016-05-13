@@ -1,0 +1,23 @@
+Hi Bryce,
+ 
+
+Sorry for the length and level of detail in this email.  I just want to articulate my user-observations on the durations (rhythm) playback bug, which I hope you can pass on to the team.  
+
+The previous team gave me a 3.1 working version for alpha testing with MAMP, so I was able to revisit today their work from about the 7th week of last quarter.  What I can see from the results is that the duration bug was present at that time and was not recognized due to other distractions.  I recall the durations playback was working accurately at some point earlier in the previous quarter, so I'm not sure when the bug took hold.
+
+In the attached Image #1 you will see a mistake in the default and drop down menu for Duration Input.  The word "quarter notes" is present, which made no sense, so I had the team correct the mistake, which they did.  As a reminder, the algorithm takes any data or integer sequence and maps the sequence to an array of duration values (0-9) with value "4" representing quarter notes.  There were two mistakes: 1) zeros are not quarter notes, and 2) the algorithm does not take  duration values as an input.  The team momentarily confused the input with the mapping.  In order to avoid this type of confusion we might consider the headings like Data Input for Pitches  or Data to Durations Input - if there's room on the Web pages.
+
+In Image#2 we can see that the erroneous default input called "Quarter Notes"  has a list of zeros as its input.  When mapped in the default range of 0-6  in Duration Mapping, these zeros remain zeros, which is a correct mapping. For the record, the zeros actually represent the smallest duration value called sixteenth notes (1/16th of  beat rather than 1/4 of a beat) in the mapping (see "!" tool tips).  As expected,  the playback is rhythmically fast and uniform.
+
+As a test (using the MAMP version), I changed the duration input selection from "Quarter Notes"  to Sine; the new input provides lots of variation (0,19,37,54,69,81...)  and the duration mapping from 0-6  yields an ascending variety of duration values (1,2,2,3,3,4,4,4...). This looks correct and functioning as it should.   When I play these new settings, I hear a result that is rhythmically fast and uniform, which is the same bug we have on the site.  It appears that any duration mapping is played with a sequence of zeros.  It is as if the MIDI player can only receive or read or play zeros on the back end.  Please try to pinpoint this in the code.
+
+Note, I'm sure how Javascript handles MIDI durations, but historically MIDI does not interpret duration values directly as it does pitches.  Even though there are MIDI value (1-128)  for each pitch, there is no MIDI value equivalent for a duration (e.g. a quarter note).  MIDI historically uses note on/off messages, and I think this is done with a time code system.  If needed, I could meet to answer any questions on this, because sometimes the descriptions use musical terminology.
+ 
+
+Conclusion:
+
+I wonder if in removing the Quarter Notes and zeros default, in Duration Input, the team may have forgotten to adjust the code in a linked area in the Duration Mapping and/or MIDI player.  The MIDI player seems to be locked somehow into executing only zeros (1/16 notes) even though the display shows varied durations such as 1,2,2,3,3,4,4,4...
+
+I hope this helps give you some direction.
+
+Dr. Middleton
