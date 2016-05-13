@@ -8,14 +8,42 @@
 /* ----- Page Styles ------ */
 /* Base Styles */
 
+#maint
+{
+    width: 45%;
+    min-height: 100px;
+    min-width: 400px;
+    max-width: 500px;
+    border: 5px solid red;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+/*    display: none; */ /* comment/uncomment to show/hide */
+}
+
+#maint img
+{
+    width: 100px;
+    margin-left: 1em;
+}
+
+#maint h3
+{
+    margin-top: 10px;
+    width: 65%;
+    float: right;
+    font-size: 110%;
+    margin-right: 11px;
+    letter-spacing: 0px;
+}
+
 /* manual text insert text box resizing
     added 4/26/2016 - david walker
 */
-input
+input[type=number], input[type=text]
 {
-    width: 4em;
-    margin-left: 4px;
-    margin-right: 4px;    
+    width: 2em;
+    margin-left: 0px;
+    margin-right: 0px;    
 }
 
 #note_count1,#note_count2,#note_count3,#note_count4{
@@ -132,7 +160,7 @@ header {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  margin: 0px 0px 15px 10%;
+  margin: 0px 0px 1em 10%;
   width: 80%; }
   #main_container:before, #main_container:after {
     content: " ";
@@ -150,7 +178,9 @@ header {
 
 #content {
   *zoom: 1;
-  display: block; }
+  display: block; 
+padding: 0em 1em 1em 1em;
+}
   #content:before, #content:after {
     content: " ";
     display: table; }
@@ -293,7 +323,7 @@ textarea {
   padding: 3px;
   float: left; }
   .play_voiceStyle label {
-    width: 10%; }
+    width: 0%; }
   .play_voiceStyle > div {
     margin: 0px;
     padding: 3px; }
@@ -336,7 +366,7 @@ textarea {
 .play_voiceStyle .outputLeft {
   background: #222;
   color: white;
-  width: 20000%;
+  width: 80%;
   text-align: right;
   }
   
