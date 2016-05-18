@@ -56,9 +56,7 @@
 */
 input[type=number], input[type=text]
 {
-    width: 2em;
-    margin-left: 0px;
-    margin-right: 0px;    
+    width: 3em; 
 }
 
 #note_count1,#note_count2,#note_count3,#note_count4{
