@@ -11,7 +11,6 @@
 
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script src="js/morph.js"></script>
-    <script src="js/jquery.browser.min.js"></script>
 
     <!-- Load in external CSS files //-->
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
@@ -755,6 +754,7 @@
 
         <!-- Content area //-->
         <!-- Enter your content in the div with the correct class name //-->
+
         <div id="content_container">
 
             <div id="options">
@@ -767,11 +767,13 @@
 					
                     <button type="button" class="btn btn-default btn-sm save_option" data-toggle="modal" data-target="#saveModal"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
                     <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#loadModal"><span class="glyphicon glyphicon-folder-open"></span> Load</button>
-
+                   
                     <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
-                        <span class="caret"></span>
+                        <span>Voice Views</span>
                     </button>
 
+<!--         Location of weird View menu          -->
+                   
                     <ul class="dropdown-menu" role="menu" aria-labelledby="viewMenu">
                         <li role="presentation">
                             <a role="menuitem" tabindex="-1" href="" id="full"><span class="glyphicon glyphicon-th"></span> Full View</a>
@@ -783,9 +785,9 @@
                 </div>
 
             </div>
-
+           
             <div id="content">
-
+               
                 <!-- Welcome Screen //-->
                 <div class="welcome">
                     <h2>Welcome!</h2>
@@ -1055,6 +1057,16 @@
                 </div>
             </div>
         </div>
+        
+<!--  BROWSER WARNING        -->
+                <div id="browserwarning">
+                
+                <button id="closewarning">X</button>
+                
+				<h3>Hey, looks like you're using Firefox. Preferred browsers for this site are Chrome or Safari.</h3>
+                   
+               </div>
+        
     </div>
 
     <!-- Load in external Javascript files //-->
@@ -1100,6 +1112,9 @@
     <script src="js/scaleOptions.js"></script>
     <script src="js/play.js"></script>
 	<script src="js/midi.js"></script>
+<!--    Browser Detection - David Walker 5/14/16 -->
+    <script src="js/jquery.browser.js"></script>
+    <script src="js/browserdetect.js"></script>
     <!-- Javascript to get tabs to switch content divs //-->
     <script src="js/FrontEnd.js"></script>
 

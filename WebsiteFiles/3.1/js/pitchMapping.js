@@ -84,7 +84,7 @@ $(document).ready(function(){
 		{
 			$BottomRange.val(0);
 		}
-        else if ($BottomRange.val() >= $TopRange.val()) 
+        else if ($BottomRange.val() >= $TopRange.val()) //RANGE ISSUE, why?
         {
             $BottomRange.val(+$TopRange.val() - 1);
         }

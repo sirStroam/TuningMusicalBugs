@@ -51,12 +51,46 @@
     letter-spacing: 0px;
 }
 
+/* browser warning */
+
+#browserwarning
+{
+    width: 45%;
+    min-height: 2em;
+    min-width: 100%;
+    max-width: 500px;
+    border: 2px solid white;
+    box-shadow: 0 0 5px rgba(34, 34, 34, 0.19);
+    background: white;
+    margin: 1em auto;
+/*    display: none; */ /* comment/uncomment to show/hide */
+}
+
+#closewarning
+{
+    float: left;
+    background: white;
+    border: none;
+}
+
+#browserwarning h3
+{
+    margin-top: 4px;
+    width: 95%;
+    float: right;
+    font-size: 110%;
+    margin-right: 0px;
+    letter-spacing: 0px;
+}
+
 /* manual text insert text box resizing
     added 4/26/2016 - david walker
 */
 input[type=number], input[type=text]
 {
-    width: 3em; 
+    width: 5em;
+    margin-left: 0px;
+    margin-right: 0px;    
 }
 
 #note_count1,#note_count2,#note_count3,#note_count4{
@@ -156,20 +190,28 @@ header {
     padding-right: 0em;
 }
   #menu:last-child {
-    margin-right: .35em; }
+    margin-right: 0em; }
   #menu li {
-/*      background: #000;*/
-      padding : 4px;
-    display: inline;
+      padding-right: 0em;
+    display: inline;     
       
-}
+      margin-right: 12px;
+      padding: 0px;
+/*      background: green;*/
+    }
+
   #menu a {
     color: #FFF;
     opacity: 0.7;
-    padding-right: .5em;
+    
+      
     -webkit-transition: all 250ms ease-in-out;
     -moz-transition: all 250ms ease-in-out;
-    transition: all 250ms ease-in-out; }
+    transition: all 250ms ease-in-out; 
+    
+}
+
+
   #menu a:hover {
     opacity: 1; }
 
