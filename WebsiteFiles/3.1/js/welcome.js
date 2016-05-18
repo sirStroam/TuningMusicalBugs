@@ -1,7 +1,9 @@
 // This is driving the site.
+
 var voiceArray = new Array(); // voiceArray holds the voice objects that are associated with each panel.
 
-$(document).ready(function () {
+$(document).ready(function () {    
+    
     var voiceTotal = 1;
     var previousVoiceCount = voiceTotal;		// This is used with the voice change functions.
 
@@ -32,7 +34,7 @@ $(document).ready(function () {
 				$(this).change();
 		});
 	});
-	
+        
 });
 
 /*

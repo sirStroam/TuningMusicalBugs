@@ -21,49 +21,64 @@
 
     <!-- Header //-->
     <header>
-        <h1 id="title">
-                <font color="#EA5744">Music</font>Algorithms
-        </h1>
+         <a href="" id="welcome">
+              <h1 id="title">
+               <font color="#EA5744">Music</font>Algorithms
+              </h1>
+        </a> 
+        
+            <!-- Menu tabs - No need to edit //-->
+            <ul class="" id="menu">
+               
+                <li>
+                    <a href="" id="welcome" class="menu_active">Welcome</a>
+                </li>
+                
+                <li>
+                    <a href="" id="howto" class="howto_active">How To</a>
+                </li>
+                
+               
+                    <div class="voiceSelect">
+                    <label>
+                    <select id="welcomeChoice">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
 
-        <div class="voiceSelect">
-            <label>
-                <select id="welcomeChoice">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                </select>
-
-                <div>Voices</div>
-            </label>
-        </div>
-
-        <!-- Menu tabs - No need to edit //-->
-        <ul class="" id="menu">
-            <li>
-                <a href="" id="welcome" class="menu_active">Welcome</a>
-            </li>
-            <li>
-                <a href="" id="pitch_input">Pitch Input</a>
-            </li>
-            <li>
-                <a href="" id="duration_input">Duration Input</a>
-            </li>
-            <li>
-                <a href="" id="pitch_mapping">Pitch Mapping</a>
-            </li>
-            <li>
-                <a href="" id="duration_mapping">Duration Mapping</a>
-            </li>
-            <li>
-                <a href="" id="scale_options">Scale Options</a>
-            </li>
-            <li>
-                <a href="" id="play" onClick='getOutput();'>Play</a>
-            </li>
-        </ul>
+                    <div>Voices</div>
+                    </label>
+            </div>    
+                
+                
+                <li>
+                    <a href="" id="pitch_input">Pitch Input</a>
+                </li>
+                <li>
+                    <a href="" id="pitch_mapping">Pitch Mapping</a>
+                </li>
+                <li>
+                    <a href="" id="duration_input">Duration Input</a>
+                </li>
+                <li>
+                    <a href="" id="duration_mapping">Duraton Mapping</a>
+                </li>
+                <li>
+                    <a href="" id="scale_options">Scale Options</a>
+                </li>
+                <li>
+                    <a href="" id="play" onClick='getOutput();'>Play</a>
+                </li>
+            </ul>
     </header>
 
+<!--
+    <div id="submenu">
+
+    </div> 
+-->
 
     <!-- Save Modal Dialog //-->
     <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -739,6 +754,7 @@
 
         <!-- Content area //-->
         <!-- Enter your content in the div with the correct class name //-->
+
         <div id="content_container">
 
             <div id="options">
@@ -751,11 +767,13 @@
 					
                     <button type="button" class="btn btn-default btn-sm save_option" data-toggle="modal" data-target="#saveModal"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
                     <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#loadModal"><span class="glyphicon glyphicon-folder-open"></span> Load</button>
-
+                   
                     <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
-                        <span class="caret"></span>
+                        <span>Voice Views</span>
                     </button>
 
+<!--         Location of weird View menu          -->
+                   
                     <ul class="dropdown-menu" role="menu" aria-labelledby="viewMenu">
                         <li role="presentation">
                             <a role="menuitem" tabindex="-1" href="" id="full"><span class="glyphicon glyphicon-th"></span> Full View</a>
@@ -767,26 +785,28 @@
                 </div>
 
             </div>
-
+           
             <div id="content">
-
+               
                 <!-- Welcome Screen //-->
                 <div class="welcome">
                     <h2>Welcome!</h2>
-                        <h5>CREATE YOUR OWN MUSIC</h5>
+                        <h5>CREATE YOUR OWN MUSIC FROM DATA</h5>
                         <p>Algorithms and Interactive Tools for Exploring Music Composition, Analysis, and Interdisciplinary Learning.
-                        <br />This Web site has interactive tools that provide a unique learning experience for users, regardless of their musical training. Students of music composition can explore algorithmic composition, while others can create musical representations of models for the purpose of aural interpretation and analysis. Here, the algorithmic process is used in a creative context so that users can convert sequences of numbers into sounds.
+                        <br />
+                        <br>
+                        This Web site has interactive tools that provide a unique learning experience for users, regardless of their musical training. Students of music composition can explore algorithmic composition, while others can create musical representations of models for the purpose of aural interpretation and analysis. Here, the algorithmic process is used in a creative context so that users can convert sequences of numbers into sounds.
                                                 <br><br />Looking for v3.0? Click <a href="http://musicalgorithms.org/3.0/index.html">here</a>
                                                 <br />Looking for v2.0? Click <a href="http://musicalgorithms.org/index.php">here</a> 
 						<br />Looking for v1.0? Click <a href="http://musicalgorithms.ewu.edu/">here</a>                     
                         </p>
                         
-                    <div id="maint">
+                <div id="maint">
                     <img src="./images/maintsign.jpg" alt="Maintenance Sign">
 				    <h3>We are currently performing upgrades and fixing a duration mapping bug for this current version(3.1). These changes should be in place by June 10.</h3>
-				    </div>
+				</div>
                         
-                        <blockquote>
+                    <blockquote>
 					<small>
 					Project Director:
 					<br />Jonathan N. Middleton, D.M.A.
@@ -795,7 +815,83 @@
 					<br />musicalgorithms.ewu.edu
 					</small>
 				</blockquote>
+				
 				<sub style="color: #777;">Music Algorithms updated & refactored by: Isaac Deal, Cody Demianew, Tyler Herrin, Anna Kravtsova, and Evan Nilson.</sub>
+
+                </div>
+                
+                <div class="howto">
+                    <h2>How to</h2>
+                        <h5>There are 4 basic steps to create music from your data!</h5>
+                        <ul id="howtolist">
+                           <li>
+                               <h4 style="text-decoration: underline;">Help for all pages</h4>
+                               <ul>
+                                    <li>
+                                        Data must be in the form of a comma seperated list, if you already have your own list you can load it via the "Load" button in the upper right corner or simply paste it into the text box.
+                                    </li>
+                                    <br>
+                                    <li>
+                                        Optionally, you can use a pre-generated set of data from the drop down menu.
+                                        <br><br>
+                                        <small>For more information on each option, hover over the blue info button (<img src="./images/info.png" alt="">) next to the box after you have selected your choice.
+                                        </small>
+                                    </li>
+                                    
+                               </ul>
+                           </li>
+                           <h3 style="text-decoration: underline;">Steps</h3>
+                            <li>
+                                <h4>1a) Pitch Input</h4>
+                                <ul>
+                                    <li>This is where you enter your starting data, what you want to turn into music.</li><br>
+                                </ul>
+                            </li>
+                            <li>
+                               <h4>2a) Pitch Mapping</h4>
+                                <ul>
+                                    <li>
+                                        This is where your data values are modified to be read as a musical note; the range of 1-88 represents the 88 keys on a piano with a value of 0 representing silence (no pitch).
+                                    </li>
+                                    <br>
+                                </ul>
+                            </li>
+                            <li>
+                               <h4>1b) Duration Input</h4>
+                                <ul>
+                                    <li>This is where each number of your data set is given a number representing a length of time to play. A higher number plays the respective note for a longer amount of time.
+                                    </li>
+                                    <br>
+                                </ul>
+                            </li>
+                            <li>
+                               <h4>2b) Duration Mapping</h4>
+                                <ul>
+                                    <li>
+                                        This is where the duration values get mapped a range of durations, each being associated with the pitch from Pitch Mapping.
+                                    </li>
+                                    <br>
+                                </ul>
+                            </li>
+                            <li>
+                               <h4>3) Scale Options</h4>
+                                <ul>
+                                    <li>
+                                        This is where the Pitch Mapping output is adjusted to fit a designated musical scale, such that the output can fit the sound of the Scale By selection. 
+                                    </li>
+                                    <br>
+                                </ul>
+                            </li>
+                            <li>
+                               <h4>4) Play!</h4>
+                                <ul>
+                                    <li>Here you can change tempo, instrument playing your data and save your creation as a MIDI file.
+                                    </li><br>
+                                    <li>Head over to the "Play" tab and enjoy your creation!</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
 
                 </div>
 
@@ -961,6 +1057,16 @@
                 </div>
             </div>
         </div>
+        
+<!--  BROWSER WARNING        -->
+                <div id="browserwarning">
+                
+                <button id="closewarning">X</button>
+                
+				<h3>Hey, looks like you're using Firefox. Preferred browsers for this site are Chrome or Safari.</h3>
+                   
+               </div>
+        
     </div>
 
     <!-- Load in external Javascript files //-->
@@ -1006,6 +1112,9 @@
     <script src="js/scaleOptions.js"></script>
     <script src="js/play.js"></script>
 	<script src="js/midi.js"></script>
+<!--    Browser Detection - David Walker 5/14/16 -->
+    <script src="js/jquery.browser.js"></script>
+    <script src="js/browserdetect.js"></script>
     <!-- Javascript to get tabs to switch content divs //-->
     <script src="js/FrontEnd.js"></script>
 
