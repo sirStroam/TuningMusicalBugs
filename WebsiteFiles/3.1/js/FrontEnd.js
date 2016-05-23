@@ -19,12 +19,17 @@
 					case "scale_options":
 						return 6;
 <<<<<<< HEAD
+<<<<<<< HEAD
 					case "play":
 						return 7;
 =======
                     case "howto":
                         return 7;
 >>>>>>> refs/remotes/origin/DavidBugFixes
+=======
+                    case "howto":
+                        return 7;
+>>>>>>> refs/remotes/origin/HowToPage
                 }
             };
 
