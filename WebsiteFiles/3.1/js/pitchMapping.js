@@ -77,16 +77,18 @@ $(document).ready(function(){
         var $TopRange = $panel.find('[id^=to]');
         var $BottomRange = $panel.find('[id^=range]');
         var $TextBox = $panel.find('[id^=mapArea]');
+        var top = parseInt($TopRange.val());
+        var bottom = parseInt($BottomRange.val());
 
         var voiceNumber = getVoiceNumber($panel);
-		
+
 		if ($BottomRange.val() < 0)
 		{
 			$BottomRange.val(0);
 		}
-        else if ($BottomRange.val() >= $TopRange.val()) 
+        else if (bottom >= top)
         {
-            $BottomRange.val(+$TopRange.val() - 1);
+            $BottomRange.val($TopRange.val()-1);
         }
 
         voiceArray[voiceNumber - 1].pitchMappingArrayLowerBound = $BottomRange.val();
@@ -430,7 +432,7 @@ function pitchMapping(numberOfVoice) {
 			<!--		<input name='addSilence' type='checkbox'><label>Add Silence</label>\
 					<label>Value of silence:</label><input type='text' name='valueSilence' >\
 					<img id='silenceImg"+ voiceCount + "'>\
-			-->		&nbsp;<button type='button' id='modify"+ voiceCount + "' value='Modify'>Modify Output</button>\
+			-->		<button type='button' id='modify"+ voiceCount + "' value='Modify'>Modify Output</button>\
 				</fieldset>\
 			</fieldset>\
 		</div>\

@@ -698,6 +698,7 @@ function toArray(input) {
     if (input !== undefined) {
         result = input.split(",");
         for (var i = 0; i < result.length; i++) {
+            console.log(result[i]);
             result[i] = parseInt(result[i]);
         }
         return result;

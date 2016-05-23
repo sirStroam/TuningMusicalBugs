@@ -1,5 +1,7 @@
         $(document).ready(function () {
 
+            $(".howto").hide();
+            
             var toNum = function (e) {
                 switch (e.toString().toLowerCase()) {
 					case "welcome":
@@ -16,8 +18,13 @@
 						return 5;
 					case "scale_options":
 						return 6;
+<<<<<<< HEAD
 					case "play":
 						return 7;
+=======
+                    case "howto":
+                        return 7;
+>>>>>>> refs/remotes/origin/DavidBugFixes
                 }
             };
 

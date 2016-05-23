@@ -8,6 +8,21 @@
 /* ----- Page Styles ------ */
 /* Base Styles */
 
+.howto
+{
+    margin-top: -0px;
+    margin-bottom: 1em;
+}
+
+#howtolist
+{
+    max-width: 76%;
+}
+
+#howtolist li ul li {
+    list-style: square;
+}
+
 #maint
 {
     width: 45%;
@@ -36,12 +51,50 @@
     letter-spacing: 0px;
 }
 
+/* browser warning */
+
+#browserwarning
+{
+    width: 45%;
+    min-height: 2em;
+    min-width: 100%;
+    max-width: 500px;
+    border: 2px solid white;
+    box-shadow: 0 0 5px rgba(34, 34, 34, 0.19);
+    background: white;
+    margin: 1em auto;
+/*    display: none; */ /* comment/uncomment to show/hide */
+}
+
+#closewarning
+{
+    float: left;
+    background: white;
+    border: none;
+}
+
+#browserwarning h3
+{
+    margin-top: 4px;
+    width: 95%;
+    float: right;
+    font-size: 110%;
+    margin-right: 0px;
+    letter-spacing: 0px;
+}
+
 /* manual text insert text box resizing
     added 4/26/2016 - david walker
 */
 input[type=number], input[type=text]
 {
+<<<<<<< HEAD
     width: 3em;    
+=======
+    width: 3em;
+    margin-left: 0px;
+    margin-right: 0px;    
+>>>>>>> refs/remotes/origin/DavidBugFixes
 }
 
 #note_count1,#note_count2,#note_count3,#note_count4{
@@ -74,20 +127,30 @@ header {
   margin-bottom: 50px;
   height: 50px;
   background: #49463f;
-  border-bottom: 3px solid #413E38;
-  box-shadow: 0px 5px 20px rgba(101, 101, 101, 0.6); }
+/*  border-bottom: 3px solid #413E38;*/
+  box-shadow: 0px 5px 20px rgba(101, 101, 101, 0.6);
+}
   header:before, header:after {
     content: " ";
     display: table; }
   header:after {
     clear: both; }
 
+#submenu
+{
+  max-width: 100%;
+  margin-bottom: 50px;
+  height: 50px;
+  background: #49463f;
+/*  border-bottom: 3px solid #413E38;*/
+  border-bottom: 3px solid #413E38;
+  box-shadow: 0px 5px 20px rgba(101, 101, 101, 0.6);
+}
+
 #title {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 23.23176%;
-  padding-left: 10px;
+    float: left;
+  text-align: left;
+    padding-left: .35em;
   margin-top: 4px;
   font-size: 36px;
   font-weight: 100;
@@ -102,11 +165,11 @@ header {
     text-transform: uppercase; }
 
 .voiceSelect {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 14.70196%;
-  text-align: right; }
+  text-align: left; 
+    width: 100px;
+    float: left;
+    margin-top: -15px;
+}
   .voiceSelect:last-child {
     margin-right: 0; }
   .voiceSelect div {
@@ -121,20 +184,19 @@ header {
   color: #FFF;
   border: 0px;
   padding: 4px;
-  width: 80px;
+  width: 60px;
   border-radius: 0;
   -webkit-appearance: none; }
 
 #menu {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 57.35098%;
-  text-align: center;
-  margin: 15px 10px 0 0; }
+  float: right;
+  margin: 15px 0px 0px 0px; 
+    padding-right: 0em;
+}
   #menu:last-child {
-    margin-right: 0; }
+    margin-right: 0em; }
   #menu li {
+<<<<<<< HEAD
     display: inline-block; 
     padding-left: 1%;
     padding-right: 1%;
@@ -144,9 +206,28 @@ header {
   #menu a {
     color: #FFF;
     opacity: 0.7;
+=======
+      padding-right: 0em;
+    display: inline;     
+      
+      margin-right: 12px;
+      padding: 0px;
+/*      background: green;*/
+    }
+
+  #menu a {
+    color: #FFF;
+    opacity: 0.7;
+    
+      
+>>>>>>> refs/remotes/origin/DavidBugFixes
     -webkit-transition: all 250ms ease-in-out;
     -moz-transition: all 250ms ease-in-out;
-    transition: all 250ms ease-in-out; }
+    transition: all 250ms ease-in-out; 
+    
+}
+
+
   #menu a:hover {
     opacity: 1;}
 
@@ -162,7 +243,7 @@ header {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  margin: 0px 0px 1em 10%;
+  margin: 0em 0em 1em 10%;
   width: 80%; }
   #main_container:before, #main_container:after {
     content: " ";
@@ -178,10 +259,12 @@ header {
   color: #222222;
   padding: 1px; }
 
+/* Added padding to keep the text away from the edge of the box 4/30 - DW */
 #content {
   *zoom: 1;
-  display: block; 
-padding: 0em 1em 1em 1em;
+  display: block;
+    padding: 0em 1em 1em 1em;
+    
 }
   #content:before, #content:after {
     content: " ";
@@ -227,7 +310,10 @@ padding: 0em 1em 1em 1em;
       border-left: 1px solid #dddddd;
       padding: 0px 20px 0px 20px; }
   #options #options_buttons {
-    float: right; }
+    float: right; 
+    padding-right: 1.5em;
+    padding-top: 2px;
+}
 
 .full_view {
   float: left;
