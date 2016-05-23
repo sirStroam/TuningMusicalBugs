@@ -609,7 +609,7 @@ function pitchInput(numberOfVoice) {
 				<img id='pitchInfo"+ voiceCount + "'> \
 				<label id='notes"+ voiceCount + "'>Note Count:</label>\
 				<input type='text' id='note_count"+ voiceCount + "'></input>\
-				<label id='util"+ voiceCount+"'>  Utilities:</label>\
+				<label id='util"+ voiceCount+"'>  Modify Input:</label>\
 				<button type='button' class='btn btn-default btn-sm' data-toggle='modal' onclick='openUtilities(\"pitchInputUtilityModal\",\"areaPitch\","+voiceCount+",\"pitchInputUtilityBox\")'><span class='glyphicon glyphicon-wrench'></span></button><br>\
                 <label id='dna"+ voiceCount + "' style='display:none'>Sequence:</label>\
                 <textarea id='sequence"+ voiceCount + "' style='display:none'></textarea><br>\
