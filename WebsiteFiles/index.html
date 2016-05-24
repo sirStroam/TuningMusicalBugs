@@ -142,18 +142,18 @@
 			<div class='modal-content'>
 				<div class='modal-header'>
 					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-					<h3 class='modal-title' id='myModalLabel'>Data Utilities</h3>
+					<h3 class='modal-title' id='myModalLabel'>Data Workspace</h3>
 				</div>
 				<div class='modal-body'>
 					<textarea id='pitchInputUtilityBox' style='width: 100%' value='124'></textarea>
 					<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('pitchInputUtilityBox'))">Reverse</button>
-					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilitySampleDiv')">Sample Rate  <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button> 
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityReplaceDiv')">Replace  <span class='glyphicon glyphicon-list'></span></button> 
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button><br>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button><br>
 					<div id='pitchInputUtilityAddCommaDiv' class='util-div' style='display: none'>
 					<hr>
 					<br>
@@ -263,18 +263,19 @@
 			<div class='modal-content'>
 				<div class='modal-header'>
 					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-					<h3 class='modal-title' id='myModalLabel'>Data Utilities</h3>
+					<h3 class='modal-title' id='myModalLabel'>Data Workspace</h3>
 				</div>
 				<div class='modal-body'>
 					<textarea id='durationInputUtilityBox' style='width: 100%' value='124'></textarea>
 					<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('durationInputUtilityBox'))">Reverse</button>
-					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilitySampleDiv')">Sample Rate  <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityReplaceDiv')">Replace  <span class='glyphicon glyphicon-list'></span></button> 
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button><br>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
+					<br>
 					<div id='durationInputUtilityAddCommaDiv' class='util-div' style='display: none'>
 					<hr>
 					<br>
@@ -383,18 +384,19 @@
 			<div class='modal-content'>
 				<div class='modal-header'>
 					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-					<h3 class='modal-title' id='myModalLabel'>Data Utilities</h3>
+					<h3 class='modal-title' id='myModalLabel'>Data Workspace</h3>
 				</div>
 				<div class='modal-body'>
 					<textarea id='pitchMapUtilityBox' style='width: 100%' value='124'></textarea>
 					<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('pitchMapUtilityBox'))">Reverse</button>
-					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilitySampleDiv')">Sample Rate  <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityReplaceDiv')">Replace  <span class='glyphicon glyphicon-list'></span></button> 
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button><br>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
+                    <br>
 					<div id='pitchMapUtilityAddCommaDiv' class='util-div' style='display: none'>
 					<hr>
 					<br>
@@ -502,19 +504,20 @@
 			<div class='modal-content'>
 				<div class='modal-header'>
 					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-					<h3 class='modal-title' id='myModalLabel'>Data Utilities</h3>
+					<h3 class='modal-title' id='myModalLabel'>Data Workspace</h3>
 				</div>
 				<div class='modal-body'>
 					<textarea id='durationMapUtilityBox' style='width: 100%' value='124'></textarea>
 					<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('durationMapUtilityBox'))">Reverse</button>
-					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilitySampleDiv')">Sample Rate  <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityReplaceDiv')">Replace  <span class='glyphicon glyphicon-list'></span></button> 
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button><br>
-					<div id='durationMapUtilityAddCommaDiv' class='util-div' style='display: none'>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
+					<br>
+                    <div id='durationMapUtilityAddCommaDiv' class='util-div' style='display: none'>
 					<hr>
 					<br>
 					<b>These tools will help separate the data for use in other functions.<br>
@@ -621,18 +624,19 @@
 			<div class='modal-content'>
 				<div class='modal-header'>
 					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-					<h3 class='modal-title' id='myModalLabel'>Data Utilities</h3>
+					<h3 class='modal-title' id='myModalLabel'>Data Workspace</h3>
 				</div>
 				<div class='modal-body'>
 					<textarea id='scaleUtilityBox' style='width: 100%' value='124'></textarea>
 					<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('scaleUtilityBox'))">Reverse</button>
-					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#scaleUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#scaleUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#scaleUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#scaleUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#scaleUtilitySampleDiv')">Sample Rate  <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#scaleUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#scaleUtilityReplaceDiv')">Replace  <span class='glyphicon glyphicon-list'></span></button> 
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#scaleUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button><br>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#scaleUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
+					<br>
 					<div id='scaleUtilityAddCommaDiv' class='util-div' style='display: none'>
 					<hr>
 					<br>
