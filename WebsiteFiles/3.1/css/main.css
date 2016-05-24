@@ -198,7 +198,7 @@ header {
      padding-right: 1%;
       padding-top: .5%;
       padding-bottom: .5%;
-     border-style:groove;
+    /* border-style:groove;
      border-color: #EA5744;
      border-width:thick;
  /*     padding-right: 0em;
