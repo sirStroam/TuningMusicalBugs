@@ -1,5 +1,7 @@
         $(document).ready(function () {
 
+            $(".howto").hide();
+            
             var toNum = function (e) {
                 switch (e.toString().toLowerCase()) {
 					case "welcome":
@@ -16,6 +18,8 @@
 						return 5;
 					case "play":
 						return 6;
+                    case "howto":
+                        return 7;
                 }
             };
 
