@@ -6,30 +6,20 @@
                 switch (e.toString().toLowerCase()) {
 					case "welcome":
 						return 0;
-                    case "how_to":
-                        return 1;
 					case "pitch_input":
+						return 1;
+					case "duration_input":
 						return 2;
 					case "pitch_mapping":
 						return 3;
-					case "duration_input":
-						return 4;
 					case "duration_mapping":
-						return 5;
+						return 4;
 					case "scale_options":
-						return 6;
-<<<<<<< HEAD
-<<<<<<< HEAD
+						return 5;
 					case "play":
-						return 7;
-=======
+						return 6;
                     case "howto":
                         return 7;
->>>>>>> refs/remotes/origin/DavidBugFixes
-=======
-                    case "howto":
-                        return 7;
->>>>>>> refs/remotes/origin/HowToPage
                 }
             };
 
