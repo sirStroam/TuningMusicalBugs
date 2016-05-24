@@ -146,14 +146,14 @@
 				</div>
 				<div class='modal-body'>
 					<textarea id='pitchInputUtilityBox' style='width: 100%' value='124'></textarea>
-					<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('pitchInputUtilityBox'))">Reverse</button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityReverseDiv')">Reverse  <span class='glyphicon glyphicon-list'></span></button>
                     <button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button>
                     <button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilitySampleDiv')">Sample Rate  <span class='glyphicon glyphicon-list'></span></button>
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button> 
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityReplaceDiv')">Replace  <span class='glyphicon glyphicon-list'></span></button> 
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button>
-                    <button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button><br>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityASCIIDiv')">ASCII Conversion  <span class='glyphicon glyphicon-list'></span></button><br>
 					<div id='pitchInputUtilityAddCommaDiv' class='util-div' style='display: none'>
 					<hr>
 					<br>
@@ -165,6 +165,29 @@
 					</div>
 					
 					</div>
+                    
+                    <div id='pitchInputUtilityASCIIDiv' class='util-div' style='display: none'>
+						<hr>
+						<br>
+						<b>This tool converts data in the form of words/letters to numbers compatible with this application by their ASCII value.
+                        <br><br>
+                        Note: Be sure your data is separated correctly by using the "Add Commas" and "Replace" tools BEFORE conversion. </b><br><br>
+						<div class='horizontalAlignCenter'>
+						<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">Convert to ASCII</button>
+						</div>
+						<br>
+					</div> 
+                    
+                    <div id='pitchInputUtilityReverseDiv' class='util-div' style='display: none'>
+						<hr>
+						<br>
+						<b>Reverse the order of the data.</b><br><br>
+						<div class='horizontalAlignCenter'>
+						<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('pitchInputUtilityBox'))">Reverse</button>
+						</div>
+						<br>
+					</div>
+                    
 					<div id='pitchInputUtilityDecimalDiv' class='util-div' style='display: none'>
 						<hr>
 						<br>
@@ -267,14 +290,14 @@
 				</div>
 				<div class='modal-body'>
 					<textarea id='durationInputUtilityBox' style='width: 100%' value='124'></textarea>
-					<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('durationInputUtilityBox'))">Reverse</button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityReverseDiv')">Reverse  <span class='glyphicon glyphicon-list'></span></button>
                     <button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button>
                     <button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilitySampleDiv')">Sample Rate  <span class='glyphicon glyphicon-list'></span></button>
                     <button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityReplaceDiv')">Replace  <span class='glyphicon glyphicon-list'></span></button> 
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button>
-					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityASCIIDiv')">ASCII Conversion  <span class='glyphicon glyphicon-list'></span></button>
 					<br>
 					<div id='durationInputUtilityAddCommaDiv' class='util-div' style='display: none'>
 					<hr>
@@ -285,6 +308,27 @@
 					<div class="horizontalAlignCenter">
 					Insert a comma every <input type="text" id='durationInputUtilityCommaValue' style='width: 40px' maxlength='4'> character(s). <button type="button" onclick='addCommas("#durationInputUtilityCommaValue", "#durationInputUtilityBox")'class="btn btn-default">Insert</button>
 					</div>
+					</div>
+                    
+                     <div id='durationInputUtilityASCIIDiv' class='util-div' style='display: none'>
+						<hr>
+						<br>
+						<b>This tool converts data in the form of words/letters to numbers compatible with this application by their ASCII value.
+                        <br><br>
+                        Note: Be sure your data is separated correctly by using the "Add Commas" and "Replace" tools BEFORE conversion. </b><br><br>
+						<div class='horizontalAlignCenter'>
+						<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('durationInputUtilityBox'))">Convert to ASCII</button>
+						</div>
+						<br>
+					</div> 
+                    <div id='durationInputUtilityReverseDiv' class='util-div' style='display: none'>
+						<hr>
+						<br>
+						<b>Reverse the order of the data.</b><br><br>
+						<div class='horizontalAlignCenter'>
+						<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('durationInputUtilityBox'))">Reverse</button>
+						</div>
+						<br>
 					</div>
 					<div id='durationInputUtilityDecimalDiv' style='display: none'>
 						<hr>
