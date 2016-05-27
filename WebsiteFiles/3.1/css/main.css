@@ -121,10 +121,17 @@ header {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50px;
-  height: 50px;
-  background: #49463f;
+  height: 120px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,f2ece6+100 */
+background: #000000; /* Old browsers */
+background: -moz-linear-gradient(top,  #000000 0%, #f2ece6 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #000000 0%,#f2ece6 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #000000 0%,#f2ece6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#f2ece6',GradientType=0 ); /* IE6-9 */
+
+
 /*  border-bottom: 3px solid #413E38;*/
-  box-shadow: 0px 5px 20px rgba(101, 101, 101, 0.6);
+/*  box-shadow: 0px 5px 20px rgba(101, 101, 101, 0.6); */
 }
   header:before, header:after {
     content: " ";
@@ -147,7 +154,7 @@ header {
     float: left;
   text-align: left;
     padding-left: .35em;
-  margin-top: 4px;
+  margin-top: 1.2%;
   font-size: 36px;
   font-weight: 100;
   font-kerning: normal;
@@ -164,7 +171,7 @@ header {
   text-align: left; 
     width: 100px;
     float: left;
-    margin-top: -15px;
+    margin-top: 0.5%;
 }
   .voiceSelect:last-child {
     margin-right: 0; }
@@ -172,7 +179,7 @@ header {
     text-align: center;
     background: #413E38;
     height: 20px;
-    font-size: 11px;
+    font-size: 14px;
     color: #FFF; }
 
 #welcomeChoice {
@@ -185,27 +192,52 @@ header {
   -webkit-appearance: none; }
 
 #menu {
-  float: right;
+  float: left;
   margin: 15px 0px 0px 0px; 
     padding-right: 0em;
+    width: 80%;
 }
+
+.L1 + p,
+.L2 + p,
+.L3 + p,
+.L4 + p,
+.L5 + p,
+.L6 + p,
+.L7 + p {
+  display: inline-block;
+  font-size: 30px;
+  position: relative;
+  width: 0px;
+  color: black;
+  right: 50px;
+  transition: all 0.25s;
+  opacity: 0;
+   top: 30px; 
+}
+
+.L1:hover + p, 
+.L2:hover + p, 
+.L3:hover + p,
+.L4:hover + p,
+.L5:hover + p,
+.L6:hover + p,
+.L7:hover + p {
+  right: 22px;
+  opacity: 1;
+}
+
   #menu:last-child {
     margin-right: 1.5em; 
 }
   #menu li {
-     display: inline; 
-     padding-left: 5px;
-     padding-right: 1%;
-      padding-top: .5%;
-      padding-bottom: .5%;
-    /* border-style:groove;
-     border-color: #EA5744;
-     border-width:thick;
- /*     padding-right: 0em;
-      display: inline;     
-      margin-right: 12px;
-      padding: 0px;
-/*      background: green;*/
+     display: inline-block; 
+     padding: 0 2% 0 2%;
+    border-style: groove;
+    border-color: #A53D31;
+    border-width: thick; 
+    background: black;
+    margin: 1% 0.5% 1% 0.5%;
       
     }
 
@@ -250,7 +282,9 @@ header {
   border-top: 6px solid #6c9dfa;
   font: 14px "PT Sans", sans-serif;
   color: #222222;
-  padding: 1px; }
+  padding: 1px; 
+  margin-top: 2%;
+}
 
 /* Added padding to keep the text away from the edge of the box 4/30 - DW */
 #content {
