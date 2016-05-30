@@ -451,6 +451,7 @@ function playAndLight(i, currentVoice) {
     var duration = (getMidiClocks(voiceArray[currentVoice].durationMappingArray[i]) / 24);
     var note = voiceArray[currentVoice].FinalPitchArray[i] + 20;
     var pos = i;
+	setTimeout(function(){
     
 	if(!stopped)
 	{
@@ -459,7 +460,7 @@ function playAndLight(i, currentVoice) {
 
 		incrementControls(pos);
 		pos++;
-	}
+	}	},Math.abs(1000-(1000*(duration/4))));
 }
 
 
