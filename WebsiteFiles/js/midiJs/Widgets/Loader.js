@@ -336,7 +336,16 @@ widgets.Loader = function (configure) {
 			ctx.quadraticCurveTo(x, y, x + curve, y);
 			// round-rect fill
 			var hue = ((i / (bars - 1)) * hues);
-			ctx.fillStyle = "hsla(" + hue + ", 100%, 50%, 0.85)";
+			
+            //ctx.fillStyle = "hsla(" + hue + ", 100%, 50%, 0.85)";
+            
+            //ctx.fillStyle = "hsla(6, 76%, 59%, 0.85)";
+            //ctx.fillStyle = "hsla(0, 0%, 50%, 0.85)";
+            
+            ctx.fillStyle = "hsla(6, 0%, 100%, 0.92)";
+            if(i%2==0){
+                ctx.fillStyle = "hsla(6, 0%, 100%, 0.85)";
+            }
 			ctx.fill();
 			ctx.restore();
 		}
