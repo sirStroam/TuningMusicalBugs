@@ -2,24 +2,26 @@
 
             $(".howto").hide();
             
+            //This is the "id" of the tab used in direction of transition, etc
+            //essentially this describes the order of tabs in the nav
             var toNum = function (e) {
                 switch (e.toString().toLowerCase()) {
 					case "welcome":
 						return 0;
+                    case "howto":
+                        return 1;
 					case "pitch_input":
-						return 1;
-					case "duration_input":
 						return 2;
 					case "pitch_mapping":
 						return 3;
-					case "duration_mapping":
+					case "duration_input":
 						return 4;
-					case "scale_options":
+					case "duration_mapping":
 						return 5;
-					case "play":
+					case "scale_options":
 						return 6;
-                    case "howto":
-                        return 7;
+					case "play":
+						return 7;
                 }
             };
 
