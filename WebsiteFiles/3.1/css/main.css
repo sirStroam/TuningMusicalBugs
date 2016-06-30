@@ -154,8 +154,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
 #title {
     float: left;
   text-align: left;
+    display:inline;
     padding-left: .35em;
-  margin-top: 1.2%;
+  margin-top: 20px;
   font-size: 36px;
   font-weight: 100;
   font-kerning: normal;
@@ -169,10 +170,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
     text-transform: uppercase; }
 
 .voiceSelect {
-  text-align: left; 
+  text-align: center; 
+    display:inline;
     width: 100px;
     float: left;
-    margin-top: 0.5%;
+    margin-top: 13px;
 }
   .voiceSelect:last-child {
     margin-right: 0; }
@@ -194,9 +196,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
 
 #menu {
   float: left;
+    display:inline-block;
   margin: 15px 0px 0px 0px; 
-    padding-right: 0em;
-    width: 80%;
+/*    padding-right: -5em;*/
+    width: 830px;
+    min-width: 50%;
+    -webkit-padding-start: 0px;
 }
 
 .L1 + p,
@@ -214,7 +219,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
   right: 50px;
   transition: all 0.25s;
   opacity: 0;
-   top: 30px; 
+   top: 28px; 
 }
 
 .L1:hover + p, 
@@ -228,24 +233,30 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
   opacity: 1;
 }
 
-  #menu:last-child {
-    margin-right: 1.5em; 
-}
+/*  #menu:last-child {*/
+/*    margin-right: 1.5em; */
+/*}*/
   #menu li {
      display: inline-block; 
-     padding: 0 2% 0 2%;
+     padding: 0 3px 0 3px;
     border-style: groove;
     border-color: #A53D31;
     border-width: thick; 
-    background: black;
-    margin: 1% 0.5% 1% 0.5%;
+    background: #4C4C4C;
+    margin: 1.1% 0.1% 1.1% 0.1%;
       
     }
 
-  #menu a {
+.L1 a,
+.L2 a,
+.L3 a, 
+.L4 a,
+.L5 a, 
+.L6 a, 
+.L7 a,
+.L8 a {
     color: #FFF;
-    opacity: 0.7;
-    
+    font-weight: 600;
       
     -webkit-transition: all 250ms ease-in-out;
     -moz-transition: all 250ms ease-in-out;
@@ -253,9 +264,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
     
 }
 
-
-  #menu a:hover {
-    opacity: 1; }
 
 .menu_active {
   opacity: 1 !important;
