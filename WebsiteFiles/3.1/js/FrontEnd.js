@@ -24,6 +24,28 @@
 						return 7;
                 }
             };
+            
+            
+            /*Previous Version drop down menu*/
+            $("#previousmenu").change(function(){
+                if($(this).val() == "3.1") 
+                {
+                    window.location.replace("http://musicalgorithms.org/3.1/");   
+                }
+                else if($(this).val() == "3.0")
+                {
+                     window.location.replace("http://musicalgorithms.org/3.0/"); 
+                }
+                else if($(this).val() == "2.0")
+                { 
+                     window.location.replace("http://musicalgorithms.org/index.php"); 
+                }
+                else
+                {
+                     window.location.replace("http://musicalgorithms.ewu.edu/"); 
+                }
+                
+            });
 
 
 
