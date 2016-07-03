@@ -849,9 +849,28 @@
                         <br />
                         <br>
                         This Web site has interactive tools that provide a unique learning experience for users, regardless of their musical training. Students of music composition can explore algorithmic composition, while others can create musical representations of models for the purpose of aural interpretation and analysis. Here, the algorithmic process is used in a creative context so that users can convert sequences of numbers into sounds.
-                                                <br><br />Looking for v3.0? Click <a href="http://musicalgorithms.org/3.0/index.html">here</a>
-                                                <br />Looking for v2.0? Click <a href="http://musicalgorithms.org/index.php">here</a> 
-						<br />Looking for v1.0? Click <a href="http://musicalgorithms.ewu.edu/">here</a>                     
+                            
+                            <br><br />
+                            <div class="versionSelect">
+                            <label>
+                            <select name="versionMenu" id="versionMenu">
+                                <option>Older Versions</option>
+                                <option value="http://musicalgorithms.ewu.edu/">v1.0</option>
+                                <option value="http://musicalgorithms.org/index.php">v2.0</option>
+                                <option value="http://musicalgorithms.org/3.0/index.html">v3.0</option>
+                                </select>
+                                <script type="text/javascript">
+                                 var urlmenu = document.getElementById( 'versionMenu' );
+                                 urlmenu.onchange = function() {
+                                      window.open( this.options[ this.selectedIndex ].value );
+                                 };
+                                </script>
+                            </label>
+<!--
+ drop down menu versions html and script learning source:  
+http://www.webdeveloper.com/forum/showthread.php?211180-Drop-Down-Menus-with-URL-link-options
+-->
+                        <br><br />                    
                         </p>
                         
                 <div id="maint">
@@ -869,7 +888,7 @@
 					</small>
 				</blockquote>
 				
-				<sub style="color: #777;">Music Algorithms updated & refactored by: Isaac Deal, Cody Demianew, Tyler Herrin, Anna Kravtsova, and Evan Nilson.</sub>
+				<sub style="color: #777;">Music Algorithms updated & refactored by: Chase Myers, Stormi Sprague, Bryce Fenske, David Walker, and James White.</sub>
 
                 </div>
                 
