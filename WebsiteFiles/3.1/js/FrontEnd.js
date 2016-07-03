@@ -46,8 +46,7 @@
                 }
                 
             });
-
-
+            
 
             /* Change the views of the voices (Have tabbed or full view) */
             $("#options ul li a").on('click', function (e) {
