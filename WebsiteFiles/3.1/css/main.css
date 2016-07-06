@@ -763,28 +763,8 @@ div.graph-tooltip-label td {
 @media all and (max-width: 1000px) {
   header {
     height: auto; }
-
-  #title {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%;
-    text-align: center;
-    padding: 0; }
-    #title:last-child {
-      margin-right: 0; }
-
-  .voiceSelect {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%;
-    margin: 10px 0 0 0;
-    text-align: center;
-    padding: 0px; }
-    .voiceSelect:last-child {
-      margin-right: 0; }
-
+    
+    
   #menu {
     float: left;
     display: block;
