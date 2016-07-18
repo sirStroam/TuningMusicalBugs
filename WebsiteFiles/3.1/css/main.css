@@ -8,6 +8,11 @@
 /* ----- Page Styles ------ */
 /* Base Styles */
 
+#previousmenu
+{
+    padding: 1px; 
+}
+
 .howto
 {
     margin-top: -0px;
@@ -27,7 +32,7 @@
 {
     width: 390px;
     height: 75px;
-    min-height: 75px;
+    min-height: 85px;
     min-width: 390px;
     max-width: 390px;
     border: 3px solid red;
