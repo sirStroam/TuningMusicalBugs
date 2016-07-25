@@ -6,19 +6,19 @@
                 switch (e.toString().toLowerCase()) {
 					case "welcome":
 						return 0;
-					case "pitch_input":
+					case "howto":
 						return 1;
-					case "duration_input":
+					case "pitch_input":
 						return 2;
 					case "pitch_mapping":
 						return 3;
-					case "duration_mapping":
+					case "duration_input":
 						return 4;
-					case "scale_options":
+					case "duration_mapping":
 						return 5;
-					case "play":
+					case "scale_options":
 						return 6;
-                    case "howto":
+                    case "play":
                         return 7;
                 }
             };
