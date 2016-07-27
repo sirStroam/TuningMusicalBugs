@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -190,9 +191,8 @@
                     <div id='pitchInputUtilityASCIIDiv' class='util-div' style='display: none'>
 						<hr>
 						<br>
-						<b>This tool converts data in the form of words/letters to numbers compatible with this application by their ASCII value.
-                        <br><br>
-                        Note: Be sure your data is separated correctly by using the "Add Commas" and "Replace" tools BEFORE conversion. </b><br><br>
+						<b>This tool converts comma separated keyboard characters to corresponding ASCII values.  
+                        <br><br>You can add commas to your source material by using the "Add Commas" or "Replace" tools above. </b><br><br>
 						<div class='horizontalAlignCenter'>
 						<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">Convert to ASCII</button>
 						</div>
@@ -256,9 +256,14 @@
 					<div id='pitchInputUtilityReplaceDiv' class="horizontalAlignCenter util-div" style='display: none'>
 					<hr>
 					<br>
-					<b>Replace characters in the stream.</b><br><br>
+					<b>Replace characters in the stream</b><br><br>
+					<button type="button" class="btn btn-default" onclick="replaceAll(document.getElementById('pitchInputUtilityBox'), document.getElementById('pitchInputUtilityReplaceAllTarget'), document.getElementById('pitchInputUtilityReplaceAllSubstitute'))" >Replace</button>
+					<input type='text' id='pitchInputUtilityReplaceAllTarget' style='width: 36px' maxlength='3'> with <input type="text" id='pitchInputUtilityReplaceAllSubstitute' style='width: 36px' maxlength='3'>
+                    
+                    <br><br><b>Replace data in comma-separated list</b><br><br>
 					<button type="button" class="btn btn-default" onclick="replace(document.getElementById('pitchInputUtilityBox'), document.getElementById('pitchInputUtilityReplaceTarget'), document.getElementById('pitchInputUtilityReplaceSubstitute'))" >Replace</button>
-					<input type='text' id='pitchInputUtilityReplaceTarget' style='width: 36px' maxlength='3'> with <input type="text" id='pitchInputUtilityReplaceSubstitute' style='width: 36px' maxlength='3'>
+					<input type='text' id='pitchInputUtilityReplaceTarget' style='width: 36px' maxlength='3'> with <input type="text" id='pitchInputUtilityReplaceSubstitute' style='width: 36px' maxlength='3'>    
+                        
 					</div>
 					<div id='pitchInputUtilityFilterDiv' class='util-div' style='display: none'>
 						<hr>
@@ -334,9 +339,8 @@
                      <div id='durationInputUtilityASCIIDiv' class='util-div' style='display: none'>
 						<hr>
 						<br>
-						<b>This tool converts data in the form of words/letters to numbers compatible with this application by their ASCII value.
-                        <br><br>
-                        Note: Be sure your data is separated correctly by using the "Add Commas" and "Replace" tools BEFORE conversion. </b><br><br>
+						<b>This tool converts comma separated keyboard characters to corresponding ASCII values.  
+                        <br><br>You can add commas to your source material by using the "Add Commas" or "Replace" tools above. </b><br><br>
 						<div class='horizontalAlignCenter'>
 						<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('durationInputUtilityBox'))">Convert to ASCII</button>
 						</div>

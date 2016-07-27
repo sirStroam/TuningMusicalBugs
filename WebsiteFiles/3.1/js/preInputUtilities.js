@@ -137,6 +137,26 @@ function replace(textArea, targetTextArea, substituteTextArea){
 	var content = textArea.value; //should be in string form
 	var target = targetTextArea.value;
 	var substitute = substituteTextArea.value;
+    var strArray;
+    
+    strArray = content.split(",");
+   
+    for(var item in strArray)
+    {
+        if(strArray[item] === (target + ""))
+        {
+            strArray[item] = substitute;
+        }
+    }
+
+	textArea.value = strArray.join();
+}
+
+
+function replaceAll(textArea, targetTextArea, substituteTextArea){
+	var content = textArea.value; //should be in string form
+	var target = targetTextArea.value;
+	var substitute = substituteTextArea.value;
 	
 	var expression = new RegExp(target, "g"); //In order to do a global replace(replace more than once) we have to use a regex
 
@@ -146,6 +166,7 @@ function replace(textArea, targetTextArea, substituteTextArea){
 	textArea.value = content.split(",");
 
 }
+
 
 
 function undo(homeText){
