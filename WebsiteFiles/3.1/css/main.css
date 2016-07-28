@@ -13,6 +13,16 @@
     padding: 1px; 
 }
 
+#keyboardButton{
+    vertical-align: middle;
+    background-image: url("../images/pianoSmall.png");
+    width: 26px;
+    height: 18px;
+    background-repeat: no-repeat;
+    border: none;
+    
+}
+
 .howto
 {
     margin-top: -0px;

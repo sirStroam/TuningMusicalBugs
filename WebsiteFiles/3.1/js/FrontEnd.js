@@ -164,7 +164,7 @@
                                             $(this).hide();   
                                         });
                                         
-                                        $("#options_buttons").append('<input type="submit" style="position: absolute; right: 0px; margin: 3px;" value="Save Midi File" onClick="downloadMidi()" class="btn btn-primary saveMidi">');
+                                        $("#options_buttons").append('<input type="submit" style="position: absolute; right: 0px; margin: 3px;" value="Save MIDI File" onClick="downloadMidi()" class="btn btn-primary saveMidi">');
                                     } else {
                                        $("#options_buttons").find("button").each(function() {
                                             $(this).show();   

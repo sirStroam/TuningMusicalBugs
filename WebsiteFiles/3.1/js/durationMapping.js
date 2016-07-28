@@ -390,6 +390,8 @@ function durationMapping(numberOfVoice) {
 				<br /><label>Range:</label><input type='number' id='dRange"+ voiceCount + "' name='Range'>\
 				<label>to:</label><input type='number' id='dTo"+ voiceCount + "' name='to'>\
 				<img  id='dRangeImg"+ voiceCount + "'>\
+                <label>        </label>\
+                <button id=\"keyboardButton\" onclick='openKeyboard()'></button></a>\
             <!-- Utilities removed at client request <label id='util"+ voiceCount+"'>  Modify Input:</label>\
 				<button type='button' class='btn btn-default btn-sm' data-toggle='modal' onclick='openUtilities(\"durationMapUtilityModal\",\"dMapArea\","+voiceCount+",\"durationMapUtilityBox\")'><span class='glyphicon glyphicon-wrench'></span></button><br>\
             --> <br /><label>Output:</label>\

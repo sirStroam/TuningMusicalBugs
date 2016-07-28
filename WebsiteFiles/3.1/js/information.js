@@ -68,14 +68,14 @@ The Sine function is a function of an angle, and is commonly used ro model perio
 Info.prototype.addLogarithmic = function(){
 	this.hashInfo["Logarithmic"] ="\
 <p align=\"left\">\
-The Logarithmic Compression operation scales the output values into an inverse exponential curve. This step in the algorithm transforms numeric source values so that they can be interpreted as musical notes. The purpose of this process (called normalization) is to convert each number into a pitch (or note) in a designated instrument range. The range 1-88 represents the piano range with 88 keys.\
+The logarithmic compression operation is a scaling method that maps input values relative to an inverse exponential curve. The operation allows wide data spans to compress into smaller musical ranges, or visa versa.  The results will appear distorted with wider distributions of pitches in the bass and tighter distributions at the top of the musical range.  This operation was designed for input sets with large numbers like Pascal's Triangle or the Fibonacci series.\
 </p>";
 }
 
 Info.prototype.addDivision = function(){
 	this.hashInfo["Division"] ="\
 <p align=\"left\">\
-The division operation is a scaling method that maps (or normalizes) the numeric output values proportionally throughout the range you choose. In a simple example, when the source numbers 1,2,3 (as small, medium, and large values) are mapped to the range 1-88, they would convert to 1, 44, 88 (as small, medium, and large values in a wider range). This step in the algorithm transforms numeric source values so that they can be interpreted as musical notes. The purpose of this process (called normalization) is to convert each number into a pitch (or note) in a designated instrument range. The range 1-88 represents the piano range with 88 keys.\
+The division operation is a proportionate scaling method that maps (or normalizes) the numeric input values with a relatively even distribution throughout the designated musical range. In a simple example, when the source numbers 1,2,3 (as small, medium, and large values) are mapped to the range 1-88, they would convert to 1, 44, 88. \
 </p>";
 }
 
@@ -83,7 +83,7 @@ The division operation is a scaling method that maps (or normalizes) the numeric
 Info.prototype.addModulo = function(){
 	this.hashInfo["Modulo"] ="\
 <p align=\"left\">\
-The modulo operation is a scaling method that maps values within a cyclical pattern throughout the range you choose. In a simple example, when the source numbers 1, 2, 4, are mapped to the range 1-3, they would convert to 1, 2, 1, as the value 4 has the mod equivalent to 1 in a cyclical counting pattern: 1, 2, 3, 1, 2, 3, 1, 2,3. This step in the algorithm transforms numeric source values so that they can be interpreted as musical notes. The purpose of this process (called normalization) is to convert each number into a pitch (or note) in a designated instrument range. The range 1-88 represents the piano range with 88 keys.\
+The modulo operation is a scaling method that maps input values within a cyclical pattern throughout the range you choose. In a simple example, when the source numbers 1, 2, 4, are mapped to the 3 note range 61-63, they would convert to 61, 62, 61, as the value 4 has the mod equivalent to 1 in a cyclical counting pattern: 1, 2, 3, 1, 2, 3, 1, 2, 3... (or 61,62,63,61,62,63…). \
 </p>";
 }
 
@@ -102,13 +102,8 @@ These boxes indicate the range of pitches that are to be used (and heard). The r
 Info.prototype.addDurationMap = function(){
 	this.hashInfo["durationMap"] ="\
 <p align=\"left\">\
-The duration range indicates what musical durations should be applied to the given pitches. Below is a chart with the length of the note followed by the number associated with it.\
-</p>\
-Whole: 8 Dotted Whole: 9\
-<br />Half: 6 Dotted Half: 7\
-<br />Quarter: 4 Dotted Quarter: 5\
-<br />8th: 2 Dotted 8th: 3\
-<br />16th: 0 Dotted 16th: 1";
+The purpose of the mapping process (called normalization) is to convert each input number into a pitch within a designated musical range.  Here the user can set the desired range for the melody.  The default range 1-88 represents the piano range with 88 keys.\
+</p>";
 }
 
 Info.prototype.addSilence = function(){
