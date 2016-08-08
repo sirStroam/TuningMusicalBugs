@@ -5,7 +5,7 @@
 
 html
 {
-	min-width: 1367px;
+	min-width: 1410px;
 }
 
 /* ------ Page Variables ------ */
@@ -142,15 +142,17 @@ header {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50px;
-  height: 100px;
+  height: 93px;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,f2ece6+100 */
 background: #f2ece6; /* Old browsers */
-background: -moz-linear-gradient(top,  #000000 -100%, #f2ece6 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  #000000 -100%,#f2ece6 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  #555 -100%,#f2ece6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#f2ece6',GradientType=0 ); /* IE6-9 */
-
-
+background: -moz-linear-gradient(top,  #413E38 0%, #f2ece6 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #413E38 0%, #f2ece6 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #111 0%, #444 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+ /* IE6-9 */
+/* rgba(73,70,63,.7); #49463F*/
+/* 7F7A6E 127 122 110*/
+	
+/*	background: linear-gradient(to bottom,  #49463F 0%, rgba(180, 180, 180, 0.1) 100%);*/
 /*  border-bottom: 3px solid #413E38;*/
 /*  box-shadow: 0px 5px 20px rgba(101, 101, 101, 0.6); */
 }
@@ -166,7 +168,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
   text-align: left;
   margin-top: 25px;
   font-size: 36px;
-  text-shadow: 1px 1px 4px #222; }
+  text-shadow: .25px .5px 1px #000; }
   #title:last-child {
     margin-right: 0; }
   #title font {
@@ -184,8 +186,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
     margin-right: 0; }
   .voiceSelect div {
     text-align: center;
-    background: #413E38;
-    height: 20px;
+    background: rgba(100,100,100,.5);
+    height: 21px;
     font-size: 14px;
     color: #FFF; }
 
@@ -201,6 +203,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
 #menu {
   margin: 0px 0px 0px 0px; 
   width: 100%;
+	float: left;
 }
 
 .L1 + p,
@@ -241,10 +244,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
     border-style: solid;
     border-color: #EA5744;
     border-width: 3px; 
-    background: rgba(0,0,0,.25);
+    background: rgba(100,100,100,.5);
     margin: 0% 0.5% 0% .5%;
-	font-weight: bold;
-      
+	  font-weight: bold;
+    text-shadow: 1px 1px .5px #222;  
     }
 #menu #VS {
     display: inline-block; 
@@ -275,7 +278,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
   opacity: 1 !important;
   text-decoration: underline !important;
   color: #EA5744 !important;
-  text-shadow: .0px .0px 0px 1px #222;
+  text-shadow: 1px .5px 1px #111 !important;  
 }
 
 /* Content */
@@ -299,7 +302,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
   font: 14px "PT Sans", sans-serif;
   color: #222222;
   padding: 1px; 
-  margin-top: 2%;
+  margin-top: -1%;
 }
 
 /* Added padding to keep the text away from the edge of the box 4/30 - DW */
@@ -765,3 +768,53 @@ div.graph-tooltip-label td {
 
 .choose-instrument {
   text-align: right; }
+
+@media screen and (max-width: 1410px) {
+	
+	html
+	{
+		min-width: 1105px;
+	}
+	
+	#welcome
+	{
+		float: right;	
+		width: 100%;
+	}
+	
+	header
+	{
+		height: 180px;
+	}
+	
+	#menu 
+	{
+  		width: 100%;
+	}
+	
+	 #menu li {
+     display: inline-block; 
+     padding: 5px 10px 5px 10px;
+    border-style: solid;
+    border-color: #EA5744;
+    border-width: 3px; 
+    margin: 0% 0.5% -1.1% .5%;
+	  font-weight: bold;
+    text-shadow: 1px 1px 1px #222;  
+    }
+	
+	#content_container {
+  background: white;
+  box-shadow: 0 0 5px rgba(34, 34, 34, 0.19);
+  border-top: 6px solid #6c9dfa;
+  font: 14px "PT Sans", sans-serif;
+  color: #222222;
+  padding: 1px; 
+  margin-top: 1%;
+}
+		
+}
+
+
+
+
