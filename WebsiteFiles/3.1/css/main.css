@@ -54,7 +54,7 @@ html
     margin-top: 1.5em;
     margin-bottom: 1.5em;
     padding-top: .3em;
-/*    display: none; */ /* comment/uncomment to show/hide */
+    display: none; /* comment/uncomment to show/hide */
 }
 
 #maint img
@@ -217,7 +217,7 @@ background: linear-gradient(to bottom,  #111 0%, #444 100%); /* W3C, IE10+, FF16
   font-size: 30px;
   position: relative;
   width: 0px;
-  color: black;
+  color: aliceblue;
   right: 50px;
   transition: all 0.25s;
   opacity: 0;
