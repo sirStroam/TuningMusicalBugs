@@ -41,12 +41,15 @@ $(function () {
 	$(".player-pause").on("click",function(){pause();} );		
 	
 	//disablePlay(true);
-
+	
+	
 	MIDI.loader = new widgets.Loader("Loading Instrument...");
 
+	//BF 7/30/16
+	//defualt: piano, vibraphone, marimba, classical guitar, synth drum
 	MIDI.loadPlugin({
 	soundfontUrl: "/js/midiJs/soundfont/",
-	instrument: [ "acoustic_grand_piano" ],
+	instrument: [ "acoustic_grand_piano", "acoustic_guitar_nylon", "vibraphone", "marimba", "synth_drum" ],
 	onsuccess: function() {
 		MIDI.loader.stop();
 		disablePlay(false);
